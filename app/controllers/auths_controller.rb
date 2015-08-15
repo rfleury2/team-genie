@@ -5,11 +5,7 @@ class AuthsController < ApplicationController
 	def create
     @user = User.find_by(email: params[:user][:email])
     if @user && @user.authenticate(params[:user][:password])
-      if remember_me?
-        cookies.permanent[:auth_token] = @user.auth_token
-      else
-        cookies[:auth_token] = @user.auth_token
-      end
+    	assign_cookie
       redirect_to root_path
     else
       redirect_to new_auth_path
@@ -25,5 +21,13 @@ class AuthsController < ApplicationController
 
   def remember_me?
   	params[:user][:remember_me] == '1'
+  end
+
+  def assign_cookie
+  	if remember_me?
+  	  cookies.permanent[:auth_token] = @user.auth_token
+  	else
+  	  cookies[:auth_token] = @user.auth_token
+  	end
   end
 end
