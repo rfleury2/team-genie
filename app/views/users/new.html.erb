@@ -1,11 +1,4 @@
-<%= form_for(@user) do |f| %>
-  <% if @errors %>
-    <div id="error_explanation alert alert-danger">
-      <ul class='alert alert-danger'>
-        <%= @errors %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for @user do |f| %>
 
   <h4>Create a new account</h4>
   <hr />

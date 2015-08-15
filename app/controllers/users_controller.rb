@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
 	def new 
 		@user = User.new
-		@errors = params
 	end
 
 	def create

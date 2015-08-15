@@ -1,0 +1,51 @@
+<div class='container'>
+  <h2>Sign in</h2>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="well">
+        <%= form_for :user, url: auth_path, role: 'form' do |f| %>
+
+          <h4>Use your email address to sign in.  If you do not already have an account, create one by clicking "Create Account" below.</h4>
+          <hr />
+
+          <div class="form-group">
+            <%= f.label :email, class: 'control-label' %>
+            <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :password, class: 'control-label' %>
+            <%= f.password_field :password, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :remember_me, class: 'control-label' %>
+            <%= f.check_box :remember_me, checked: true, class: 'form-control' %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "Login", class: "btn btn-warning" %>
+          </div>
+
+        <% end %>
+
+        <br /><h4><%= link_to "Reset Password - later", root_path %></h4>
+        <h4><%= link_to "Create Account", new_user_path %></h4>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <h4>Use a social account to sign in.</h4>
+      <hr />
+      <p>
+        <a href="/auth/facebook" class="btn btn-social btn-facebook">
+            <i class="fa fa-facebook"></i> <span>Facebook - later</span>
+        </a>
+
+        <a href="/auth/twitter" class="btn btn-social btn-twitter">
+            <i class="fa fa-twitter"></i> <span>Twitter - later</span>
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
