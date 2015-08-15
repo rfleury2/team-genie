@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
     uniqueness: true,
     format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/ }
   }
-  validates_length_of :password, minimum: 4, too_short: "Please enter a password that is a minimum of 4 characters"
+  validates_length_of :password, minimum: 6, too_short: "Please enter a password that is a minimum of 6 characters"
 	validates_confirmation_of :password
 
 	validates_presence_of :name
