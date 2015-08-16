@@ -4,11 +4,12 @@ class AuthsController < ApplicationController
 
 	def create
     @user = User.find_by(email: params[:user][:email])
-    if @user && @user.authenticate(params[:user][:password])
+    if can_authenticate?
     	assign_cookie
       redirect_to root_path
     else
-      redirect_to new_auth_path
+    	@error = error_message
+      render :new
     end
   end
 
@@ -29,5 +30,13 @@ class AuthsController < ApplicationController
   	else
   	  cookies[:auth_token] = @user.auth_token
   	end
+  end
+
+  def can_authenticate?
+  	@user && @user.authenticate(params[:user][:password])
+  end
+
+  def error_message
+  	"Your email or password are incorrect.  Please try again"
   end
 end

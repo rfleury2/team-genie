@@ -2,6 +2,15 @@
   <h2>Sign in</h2>
   <div class="row">
     <div class="col-md-8">
+
+      <% if @error  %>
+        <div class="alert alert-danger" role="alert">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <span class="sr-only">Error:</span>
+          <%= @error %>
+        </div>
+      <% end %>
+
       <div class="well">
         <%= form_for :user, url: auth_path, role: 'form' do |f| %>
 
