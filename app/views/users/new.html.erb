@@ -3,6 +3,15 @@
   <h4>Create a new account</h4>
   <hr />
 
+  <% if @errors %>
+    <div class="alert alert-danger" role="alert">
+      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+      <%= @errors.each do |error| %>
+        <div><%= error %></div>
+      <% end %>
+    </div>
+  <% end %>
+
   <div class="form-group">
     <%= f.label :name %><br />
     <%= f.text_field :name, autofocus: true, class: 'form-control' %>
