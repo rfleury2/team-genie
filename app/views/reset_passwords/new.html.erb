@@ -1,0 +1,29 @@
+<div class="sub-pg-padding">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="well">
+        <h4>Reset Your Password</h4>
+        <hr />
+
+        <%= form_tag reset_passwords_path, :method => :post, role: 'form' do |f|%>
+
+          <% if @error %>
+            <div id="error_explanation">
+              <ul>
+              <% @error.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="form-group">
+            <div class='control-label'><%= label_tag :email %></div>
+            <%= text_field_tag :email, params[:email], class: 'form-control' %>
+          </div>
+          <div class="actions"><%= submit_tag "Reset Password", class: 'btn btn-primary' %></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
