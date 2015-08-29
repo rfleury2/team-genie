@@ -1,0 +1,22 @@
+<%= form_for @user, url: reset_password_path(params[:id]) do |f| %>
+
+  <% if @error %>
+    <div id="error_explanation">
+      <% @error %>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :password %>
+    <%= f.password_field :password, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Reset Password", class: 'btn btn-primary' %>
+  </div>
+<% end %>
