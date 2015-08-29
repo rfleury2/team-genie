@@ -9,6 +9,7 @@
     <ul class="nav navbar-nav navbar-right">
       <% if current_user %>
         <li class="navbar-brand">Welcome, <%= current_user.name %></li>
+        <li><%= link_to "My Account", edit_user_path(current_user) %></li>
         <li><%= link_to "Log out", auth_path(current_user), method: 'delete' %></li>
       <% else %>
         <li><%= link_to "Log in", new_auth_path %></li>
