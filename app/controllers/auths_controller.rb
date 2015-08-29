@@ -8,7 +8,7 @@ class AuthsController < ApplicationController
     	assign_cookie
       redirect_to root_path
     else
-    	@error = error_message
+    	@errors = error_message
       render :new
     end
   end
@@ -37,6 +37,6 @@ class AuthsController < ApplicationController
   end
 
   def error_message
-  	"Your email or password are incorrect.  Please try again"
+  	["Your email or password are incorrect.  Please try again"]
   end
 end

@@ -33,6 +33,10 @@ RSpec.describe AuthsController, type: :controller do
       it "creates cookie with expiration date for no remember me" do
         # not implemented
       end
+
+      it "there are no errors assigned" do
+        expect(assigns(:errors)).to be_nil
+      end
     end
 
     describe "invalid user" do
@@ -48,8 +52,8 @@ RSpec.describe AuthsController, type: :controller do
         expect(response.cookies).to be_empty
       end
 
-      it "returns an error message" do
-        expect(assigns(:error)).to eq "Your email or password are incorrect.  Please try again"
+      it "returns the correct error message" do
+        expect(assigns(:errors)).to eq ["Your email or password are incorrect.  Please try again"]
       end
     end
   end
