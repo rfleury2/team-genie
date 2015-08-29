@@ -26,13 +26,13 @@ RSpec.describe User, type: :model do
   	expect(user.auth_token.length).to eq 22
   end
 
-  describe "#assign_cookie" do
+  describe "#assign_role" do
     it "overrides for admin role" do
       user.send(:assign_role, "admin")
       expect(user.role).to eq "admin"
     end
 
-    it "assigns player by default" do
+    it "assigns player role by default" do
       user.send(:assign_role)
       expect(user.role).to eq "player"
     end
