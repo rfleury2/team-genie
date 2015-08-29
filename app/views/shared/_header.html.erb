@@ -1,0 +1,20 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <%= link_to "Team Genie", root_path, class: "navbar-brand" %>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <ul class="nav navbar-nav navbar-right">
+      <% if current_user %>
+        <li class="navbar-brand">Welcome, <%= current_user.name %></li>
+        <li><%= link_to "Log out", auth_path(current_user), method: 'delete' %></li>
+      <% else %>
+        <li><%= link_to "Log in", new_auth_path %></li>
+        <li><%= link_to "Sign up", new_user_path %></li>
+      <% end %>
+    </ul>
+
+  </div><!-- /.container-fluid -->
+</nav>
