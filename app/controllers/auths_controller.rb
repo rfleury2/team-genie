@@ -18,10 +18,22 @@ class AuthsController < ApplicationController
     redirect_to root_path
   end
 
+  def facebook_auth
+    @user = User.from_facebook(env['omniauth.auth'])
+    if @user
+      assign_cookie
+      redirect_to root_path
+    else
+      @user = User.create_from_facebook(env['omniauth.auth'])
+      assign_cookie
+      redirect_to edit_user_path(@user)
+    end
+  end
+
   private 
 
   def remember_me?
-  	params[:user][:remember_me] == '1'
+  	params[:user] && params[:user][:remember_me] == '1'
   end
 
   def assign_cookie
