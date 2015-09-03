@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   resources :reset_passwords, only: [:new, :create, :edit, :update]
 
   resource :auth, only: [:new, :create, :destroy]
+  get 'auth/facebook/callback', to: 'auths#facebook_auth'
+  get 'auth/failure', to: redirect('/')
 
   # Example resource route with options:
   #   resources :products do

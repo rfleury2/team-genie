@@ -30,6 +30,20 @@ class User < ActiveRecord::Base
     self.save!(validate: false)
     UserMailer.password_reset(self).deliver_later
   end
+
+  def self.from_facebook(auth)
+    where(email: auth['info']['email']).first
+  end
+
+  def self.create_from_facebook(auth)
+    user = self.create! do |user|
+      user.provider = auth['provider']
+      user.uid = auth['uid']
+      user.name = auth['info']['name']
+      user.email = auth['info']['email']
+      user.password = 'facebook_auth'
+    end
+  end
   
   private
 

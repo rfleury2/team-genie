@@ -32,10 +32,8 @@ RSpec.describe UsersController, type: :controller do
       end
 
       it "redirects to root path" do
-        expect(
-          post :create, { user: { name: "Franco Baresi", email: "fbaresi@acmilan.it", password: "sosovalid", password_confirmation: "sosovalid" } }
-          )
-          .to redirect_to root_path
+        request = post :create, { user: { name: "Franco Baresi", email: "fbaresi@acmilan.it", password: "sosovalid", password_confirmation: "sosovalid" } }
+        expect(request).to redirect_to root_path
       end
     end
 
@@ -61,10 +59,49 @@ RSpec.describe UsersController, type: :controller do
       end
 
       it "renders new path with errors" do
-        hello = post :create, { user: { name: "", email: "", password: "", password_confirmation: "" } }
-        expect(hello).to render_template :new
+        request = post :create, { user: { name: "", email: "", password: "", password_confirmation: "" } }
+        expect(request).to render_template :new
         expect(assigns(:errors)).to be_a Array
       end
+    end
+  end
+
+  describe "get EDIT" do
+    let(:user) { FactoryGirl.create(:user) }
+
+    describe "user is logged in" do
+      before { allow(controller).to receive(:current_user) { user } }
+
+      it "renders user edit template passing the proper user" do
+        request = get :edit, { id: user.id }
+        expect(request).to render_template :edit
+        expect(assigns(:user)).to eq user
+      end
+    end
+
+    it "redirects to login page when user is not logged in" do
+      allow(controller).to receive(:current_user) { nil }
+      request = get :edit, { id: user.id }
+      expect(request).to redirect_to new_auth_path
+    end
+  end
+
+  describe "put UPDATE" do
+    let(:user) { FactoryGirl.create(:user) }
+
+    before do 
+      allow(controller).to receive(:current_user) { user } 
+      request = put :update, { id: user.id, user: { name: "Jose Mourinho", email: "special@one.pt" } }
+    end
+
+    it "updates fields" do
+      updated_user = User.find_by(name: "Jose Mourinho")
+      expect(updated_user.name).to eq "Jose Mourinho"
+      expect(updated_user.email).to eq "special@one.pt"
+    end
+
+    it "redirects to root" do
+      expect(request).to redirect_to root_path
     end
   end
 end
