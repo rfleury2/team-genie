@@ -11,6 +11,8 @@ RSpec.describe User, type: :model do
 	it { should validate_presence_of :password }
 	it { should validate_confirmation_of :password }
 
+  it { should have_many(:captainships).class_name("Team") }
+
 	it do
     should validate_length_of(:password).
       is_at_least(6).

@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   after_create { assign_role }
 
   # Associations
-  
+  has_many :captainships, foreign_key: :captain_id, class_name: "Team"
 
   # Validations
   has_secure_password
@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
       user.uid = auth['uid']
       user.name = auth['info']['name']
       user.email = auth['info']['email']
-      user.password = 'facebook_auth'
+    user.password = SecureRandom.urlsafe_base64
     end
   end
   
