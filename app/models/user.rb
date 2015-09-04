@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
       user.uid = auth['uid']
       user.name = auth['info']['name']
       user.email = auth['info']['email']
-      user.password = 'facebook_auth'
+      user.password = SecureRandom.urlsafe_base64
     end
   end
   
