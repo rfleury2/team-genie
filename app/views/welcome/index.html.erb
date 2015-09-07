@@ -3,5 +3,6 @@
 <% if current_user %>
 	<% current_user.captainships.each do |team| %>
 		<div><%= team.name %></div>
+		<%= image_tag team.avatar.url(:medium) %>
 	<% end %>
 <% end %>
