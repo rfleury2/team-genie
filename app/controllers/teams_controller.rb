@@ -42,7 +42,7 @@ class TeamsController < ApplicationController
 	end
 
 	def assign_errors
-		@team.errors.full_messages.uniq
+		@errors = @team.errors.full_messages.uniq
 	end
 
 	def find_team_by_id

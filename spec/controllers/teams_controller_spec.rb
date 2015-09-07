@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe TeamsController, type: :controller do
+  let(:team) { FactoryGirl.create(:team) }
 
   describe "GET new" do
     before do 
@@ -53,6 +54,29 @@ RSpec.describe TeamsController, type: :controller do
       it "renders the new team template" do
         expect(request).to render_template :new
       end
+    end
+  end
+
+  describe "GET edit" do
+    before { request = get :edit, { id: team.id } }
+
+    it "renders edit partial" do
+      expect(request).to render_template '_edit'
+    end
+  end
+
+  describe "PUT update" do
+    before do
+      request = put :update, { id: team.id, team: { name: "Updated" } }
+      team.reload
+    end
+
+    it "updates the team's information" do
+      expect(team.name).to eq "Updated"
+    end
+
+    it "redirects to team path" do
+      expect(request).to redirect_to team_path(team)
     end
   end
 end
