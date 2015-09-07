@@ -33,7 +33,7 @@ RSpec.describe TeamsController, type: :controller do
       end
 
       it "redirects to root path" do
-        expect(request).to redirect_to root_path
+        expect(request).to redirect_to team_path(created_team)
       end
     end
 

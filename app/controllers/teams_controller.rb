@@ -6,14 +6,19 @@ class TeamsController < ApplicationController
 	def create
 		@team = current_user.captainships.new(team_params)
 		if @team.save
-			redirect_to root_path
+			redirect_to team_path(@team)
 		else
 			@errors = @team.errors.full_messages.uniq
 			render :new
 		end
 	end
 
+	def show
+		@team = Team.find_by(id: params[:id])
+	end
+
 	def edit
+
 	end
 
 	def update
@@ -25,6 +30,6 @@ class TeamsController < ApplicationController
 	private 
 
 	def team_params
-		params.require(:team).permit(:name)
+		params.require(:team).permit(:name, :avatar)
 	end
 end

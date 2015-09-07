@@ -33,6 +33,7 @@ gem 'font-awesome-sass', '~> 4.4.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem "paperclip", "~> 4.3"
 
 group :test do
   gem 'shoulda-matchers'
