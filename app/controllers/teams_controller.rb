@@ -33,6 +33,9 @@ class TeamsController < ApplicationController
 	end
 
 	def destroy
+		find_team_by_id
+		@team.destroy
+		redirect_to root_path
 	end
 
 	private 

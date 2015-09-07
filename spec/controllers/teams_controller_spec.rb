@@ -21,7 +21,7 @@ RSpec.describe TeamsController, type: :controller do
       let(:created_team) { Team.find_by_name("Test Team") }
 
       before do 
-        request = post :create, { team: { name: "Test Team" } }
+        response = post :create, { team: { name: "Test Team" } }
       end
 
       it "creates a new team with the params" do
@@ -34,17 +34,17 @@ RSpec.describe TeamsController, type: :controller do
       end
 
       it "redirects to root path" do
-        expect(request).to redirect_to team_path(created_team)
+        expect(response).to redirect_to team_path(created_team)
       end
     end
 
     describe "invalid team" do
       before do 
-        request = post :create, { team: { name: nil } }
+        response = post :create, { team: { name: nil } }
       end
 
       it "does not save team" do
-        expect{request}.to_not change{Team.count}
+        expect{response}.to_not change{Team.count}
       end
 
       it "generates the proper error" do
@@ -52,22 +52,22 @@ RSpec.describe TeamsController, type: :controller do
       end
 
       it "renders the new team template" do
-        expect(request).to render_template :new
+        expect(response).to render_template :new
       end
     end
   end
 
   describe "GET edit" do
-    before { request = get :edit, { id: team.id } }
+    before { response = get :edit, { id: team.id } }
 
     it "renders edit partial" do
-      expect(request).to render_template '_edit'
+      expect(response).to render_template '_edit'
     end
   end
 
   describe "PUT update" do
     before do
-      request = put :update, { id: team.id, team: { name: "Updated" } }
+      response = put :update, { id: team.id, team: { name: "Updated" } }
       team.reload
     end
 
@@ -76,7 +76,22 @@ RSpec.describe TeamsController, type: :controller do
     end
 
     it "redirects to team path" do
-      expect(request).to redirect_to team_path(team)
+      expect(response).to redirect_to team_path(team)
+    end
+  end
+
+  describe "DELETE destroy" do
+    before do
+      response = delete :destroy, id: team.id 
+    end
+
+    it "destroys the current team" do
+      # This may be flaky.  Check for different implementation
+      expect(Team.count).to eq 0
+    end
+
+    it "redirects to root path" do
+      expect(response).to redirect_to root_path
     end
   end
 end
