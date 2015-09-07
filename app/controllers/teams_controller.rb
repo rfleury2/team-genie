@@ -8,20 +8,28 @@ class TeamsController < ApplicationController
 		if @team.save
 			redirect_to team_path(@team)
 		else
-			@errors = @team.errors.full_messages.uniq
+			assign_errors
 			render :new
 		end
 	end
 
 	def show
-		@team = Team.find_by(id: params[:id])
+		find_team_by_id
 	end
 
 	def edit
-
+		find_team_by_id
+		render partial: 'edit', locals: { team: @team }
 	end
 
 	def update
+		find_team_by_id
+		if @team
+			@team.update_attributes(team_params)
+			redirect_to team_path(@team)
+		else
+			redirect_to root_path
+		end
 	end
 
 	def destroy
@@ -31,5 +39,13 @@ class TeamsController < ApplicationController
 
 	def team_params
 		params.require(:team).permit(:name, :avatar)
+	end
+
+	def assign_errors
+		@team.errors.full_messages.uniq
+	end
+
+	def find_team_by_id
+		@team = Team.find_by(id: params[:id])
 	end
 end

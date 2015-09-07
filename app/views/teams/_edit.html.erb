@@ -1,0 +1,24 @@
+<%= form_for team, method: :put do |f| %>
+
+  <h4>Create New Team</h4>
+  <hr />
+
+  <% if @errors %>
+    <%= render partial: 'shared/errors', locals: { errors: @errors } %>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.file_field :avatar %>
+  </div>
+
+  <hr />
+
+  <div class="actions">
+    <%= f.submit "Update Team", class: 'btn btn-warning' %>
+  </div>
+<% end %>
