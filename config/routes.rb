@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   get 'auth/facebook/callback', to: 'auths#facebook_auth'
   get 'auth/failure', to: redirect('/')
 
+  get 'template' => 'welcome#template'
+
   # Example resource route with options:
   #   resources :products do
   #     member do

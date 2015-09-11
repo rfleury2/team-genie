@@ -1,21 +1,29 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <%= link_to "Team Genie", root_path, class: "navbar-brand" %>
+<header class="header">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle menu-button" data-toggle="collapse" data-target="#myNavbar">
+                <span class="glyphicon glyphicon-align-justify"></span>
+            </button>
+            <%= link_to "Team Genie", root_path, class: 'navbar-brand logo' %>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <nav class="collapse navbar-collapse" id="myNavbar" role="navigation">
+          <ul class="nav navbar-nav navbar-right menu">
+            <% if current_user %>
+              <li class="navbar-brand">Welcome, <%= current_user.name %></li>
+              <li><%= link_to "New Team", new_team_path, class: "page-scroll" %></li>
+              <li><%= link_to "My Account", edit_user_path(current_user), class: "page-scroll" %></li>
+              <li><%= link_to "Log out", auth_path(current_user), method: 'delete', class: "page-scroll" %></li>
+            <% else %>
+              <li><%= link_to "Log in", new_auth_path, class: "page-scroll active" %></li>
+              <li><%= link_to "Sign up", new_user_path, class: "page-scroll" %></li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
     </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <ul class="nav navbar-nav navbar-right">
-      <% if current_user %>
-        <li class="navbar-brand">Welcome, <%= current_user.name %></li>
-        <li><%= link_to "New Team", new_team_path %></li>
-        <li><%= link_to "My Account", edit_user_path(current_user) %></li>
-        <li><%= link_to "Log out", auth_path(current_user), method: 'delete' %></li>
-      <% else %>
-        <li><%= link_to "Log in", new_auth_path %></li>
-        <li><%= link_to "Sign up", new_user_path %></li>
-      <% end %>
-    </ul>
-  </div><!-- /.container-fluid -->
-</nav>
+  </div>
+</header>

@@ -1,0 +1,8 @@
+<div class="col-md-4 col-sm-6 col-xs-12 work-space">
+	<%= link_to team_path(team) do %>
+		<div class="featured-img">
+			<%= image_tag team.avatar.url(:medium) %>
+		</div>
+		<h3><%= team.name %></h3>
+	<% end %>
+</div>

@@ -3,10 +3,15 @@ class TeamsController < ApplicationController
 		@team = Team.new
 	end
 
+	def index
+		@teams = current_user.captainships
+	end
+
 	def create
 		@team = current_user.captainships.new(team_params)
 		if @team.save
-			redirect_to team_path(@team)
+			@teams = current_user.captainships
+			redirect_to teams_path(@team)
 		else
 			assign_errors
 			render :new

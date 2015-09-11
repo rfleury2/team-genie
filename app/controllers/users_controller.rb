@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(user_params)
 		if @user.save
+			assign_cookie
 			redirect_to root_path
 		else
 			@errors = @user.errors.full_messages.uniq
@@ -30,6 +31,10 @@ class UsersController < ApplicationController
 	end
 
 	private 
+
+	def assign_cookie
+		cookies[:auth_token] = @user.auth_token
+	end
 
 	def user_params
 		params.require(:user).permit(:name, :email, :password, :password_confirmation)
