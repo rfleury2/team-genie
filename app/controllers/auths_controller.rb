@@ -6,7 +6,7 @@ class AuthsController < ApplicationController
     @user = User.find_by(email: params[:user][:email])
     if can_authenticate?
     	assign_cookie
-      redirect_to root_path
+      redirect_to teams_path
     else
     	@errors = error_message
       render :new

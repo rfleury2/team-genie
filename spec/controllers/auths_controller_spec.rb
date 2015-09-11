@@ -19,8 +19,8 @@ RSpec.describe AuthsController, type: :controller do
         post :create, user: { email: valid_user.email, password: valid_user.password }
       end
 
-      it "redirects to the main page" do    
-        expect(response).to redirect_to :root
+      it "redirects to the teams page" do    
+        expect(response).to redirect_to :teams
       end
 
       it "creates permanent cookie in browser for remember me" do

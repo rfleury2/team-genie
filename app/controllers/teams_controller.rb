@@ -12,7 +12,7 @@ class TeamsController < ApplicationController
 		@team = current_user.captainships.new(team_params)
 		if @team.save
 			@teams = current_user.captainships
-			redirect_to teams_path(@team)
+			redirect_to team_path(@team)
 		else
 			assign_errors
 			render :new
