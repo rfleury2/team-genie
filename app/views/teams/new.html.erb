@@ -16,6 +16,11 @@
         </div>
 
         <div class="form-group">
+          <%= f.label :sport %><br />
+          <%= f.select :sport, @list_of_sports, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
           <%= f.file_field :avatar %>
         </div>
 

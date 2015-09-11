@@ -1,6 +1,7 @@
 class TeamsController < ApplicationController
 	def new
 		@team = Team.new
+		@list_of_sports = LIST_OF_SPORTS
 	end
 
 	def index
@@ -43,10 +44,12 @@ class TeamsController < ApplicationController
 		redirect_to root_path
 	end
 
+	LIST_OF_SPORTS = ['Soccer', 'Flag Football', 'Basketball', 'Softball', 'Kickball', 'Other']
+
 	private 
 
 	def team_params
-		params.require(:team).permit(:name, :avatar)
+		params.require(:team).permit(:name, :avatar, :sport)
 	end
 
 	def assign_errors
