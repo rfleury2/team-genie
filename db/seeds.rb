@@ -10,5 +10,7 @@ user = User.create(name: "First Last", email: "user@example.com", password: "pas
 admin = User.create(name: "Ricardo Fleury", email: "admin@admin.com", password: "password", password_confirmation: "password")
 admin.send(:assign_role, "admin")
 
-Team.create(captain: admin, name: "Test Team 1")
+team = Team.create(captain: admin, name: "Test Team 1")
 Team.create(captain: user, name: "Test Team 2")
+
+user.memberships.create!(team: team)

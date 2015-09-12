@@ -11,6 +11,7 @@ class TeamsController < ApplicationController
 	def create
 		@team = current_user.captainships.new(team_params)
 		if @team.save
+			Membership.create_captain_membership(@team, current_user)
 			@teams = current_user.captainships
 			redirect_to team_path(@team)
 		else

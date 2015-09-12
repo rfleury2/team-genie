@@ -3,8 +3,8 @@ class CreateMemberships < ActiveRecord::Migration
     create_table :memberships do |t|
     	t.belongs_to :team
     	t.belongs_to :player
-    	t.float	:amount_owed, default: 0
-    	t.boolean	:paid, default: false
+    	t.float :amount_owed, default: 0
+
 
       t.timestamps null: false
     end
