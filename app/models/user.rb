@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 
   # Associations
   has_many :captainships, foreign_key: :captain_id, class_name: "Team"
+  has_many :memberships, foreign_key: :player_id
 
   # Validations
   has_secure_password
