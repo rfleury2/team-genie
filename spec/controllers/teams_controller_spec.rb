@@ -36,6 +36,14 @@ RSpec.describe TeamsController, type: :controller do
       it "redirects to root path" do
         expect(response).to redirect_to team_path(created_team)
       end
+
+      it "creates a new membership as a captain" do
+        membership = user.memberships.last
+        expect(membership).to be_a Membership
+        expect(membership.player).to eq user
+        expect(membership.team).to eq created_team
+        expect(membership.role).to eq 'captain'
+      end
     end
 
     describe "invalid team" do

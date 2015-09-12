@@ -11,6 +11,7 @@ class TeamsController < ApplicationController
 	def create
 		@team = current_user.captainships.new(team_params)
 		if @team.save
+			create_captain_membership
 			@teams = current_user.captainships
 			redirect_to team_path(@team)
 		else
@@ -50,6 +51,10 @@ class TeamsController < ApplicationController
 
 	def team_params
 		params.require(:team).permit(:name, :avatar, :sport)
+	end
+
+	def create_captain_membership
+		@team.memberships.create(player: current_user, role: "captain")
 	end
 
 	def assign_errors
