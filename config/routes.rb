@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :users
   resources :reset_passwords, only: [:new, :create, :edit, :update]
-  resources :teams
+  resources :teams do
+    resources :memberships
+  end
 
   resource :auth, only: [:new, :create, :destroy]
   get 'auth/facebook/callback', to: 'auths#facebook_auth'
