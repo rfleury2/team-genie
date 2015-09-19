@@ -8,6 +8,8 @@ RSpec.describe Team, type: :model do
 
   it { should belong_to(:captain).class_name("User") }
 
+  it { should have_many(:invites) }
+
   describe "team captain association" do
     it "is a user" do
       expect(team.captain).to be_a User

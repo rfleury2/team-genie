@@ -1,5 +1,11 @@
+<h3>Active Members</h3>
 <% @team.memberships.each do |membership| %>
 	<div><%= membership.player.name %> - <%= membership.player.email %> - $<%= membership.amount_owed %></div>
+<% end %>
+
+<h3>Invited Members</h3>
+<% @team.invites.each do |invite| %>
+	<div><%= invite.email %></div>
 <% end %>
 
 <div class='row'>

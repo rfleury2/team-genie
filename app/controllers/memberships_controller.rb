@@ -8,6 +8,7 @@ class MembershipsController < ApplicationController
 			@player.memberships.create(team: @team)
 		else
 			# errors won't show until I js this
+			Invite.create(team: @team, email: membership_params['email'], inviter: current_user)
 			assign_errors
 		end
 		redirect_to team_path(@team, result: @something)
