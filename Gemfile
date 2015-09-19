@@ -27,6 +27,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'omniauth-facebook'
 gem 'figaro'
 
+gem 'faker'
+
 gem 'font-awesome-sass', '~> 4.4.0'
 # Use Unicorn as the app server
 # gem 'unicorn'
