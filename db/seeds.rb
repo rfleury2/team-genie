@@ -6,11 +6,16 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-user = User.create(name: "First Last", email: "user@example.com", password: "password", password_confirmation: "password")
-admin = User.create(name: "Ricardo Fleury", email: "admin@admin.com", password: "password", password_confirmation: "password")
+user = User.first_or_create!(name: "First Last", email: "user@example.com", password: "password", password_confirmation: "password")
+admin = User.first_or_create!(name: "Ricardo Fleury", email: "admin@admin.com", password: "password", password_confirmation: "password")
 admin.send(:assign_role, "admin")
 
-team = Team.create(captain: admin, name: "Test Team 1")
-Team.create(captain: user, name: "Test Team 2")
+team = Team.first_or_create!(captain: user, name: "Test Team 1")
+Team.first_or_create!(captain: user, name: "Test Team 2")
 
-user.memberships.create!(team: team)
+10.times do
+	user = User.create!(name: Faker::Name.name, email: Faker::Internet.email, password: 'password', password_confirmation: 'password')
+	team.memberships.create!(player: user) if team.memberships.count < 15
+end
+
+3.times { User.create!(name: Faker::Name.name, email: Faker::Internet.email, password: 'password', password_confirmation: 'password') }

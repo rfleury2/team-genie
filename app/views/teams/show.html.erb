@@ -1,5 +1,7 @@
 <% @team.memberships.each do |membership| %>
-	<div><%= membership.player.name %> - $<%= membership.amount_owed %></div>
+	<div><%= membership.player.name %> - <%= membership.player.email %> - $<%= membership.amount_owed %></div>
 <% end %>
 
-<%= render partial: 'memberships/new', locals: { team: @team } %>
+<div class='row'>
+	<%= render partial: 'memberships/new', locals: { team: @team } %>
+</div>
