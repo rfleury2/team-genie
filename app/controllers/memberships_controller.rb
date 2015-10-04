@@ -4,13 +4,8 @@ class MembershipsController < ApplicationController
 
 	def create
 		find_team_by_id
-		if invited_player_is_user?(membership_params['email']) && !@team.is_member?(@player)
-			@player.memberships.create(team: @team)
-		else
-			Invite.create_from_team(@team, membership_params['email'], current_user)
-			# errors won't show until I js this
-			assign_errors
-		end
+		InviteToTeam.call(membership_params['email'], @team, current_user)
+		assign_errors
 		redirect_to team_path(@team)
 	end
 
