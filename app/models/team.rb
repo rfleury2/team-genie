@@ -5,6 +5,7 @@ class Team < ActiveRecord::Base
 	belongs_to :captain, class_name: "User"
 	has_many :memberships
 	has_many :players, through: :memberships
+	has_many :invites
 
 	# Validations
 	validates_presence_of	:name

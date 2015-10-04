@@ -35,6 +35,31 @@ RSpec.describe UsersController, type: :controller do
         request = post :create, { user: { name: "Franco Baresi", email: "fbaresi@acmilan.it", password: "sosovalid", password_confirmation: "sosovalid" } }
         expect(request).to redirect_to root_path
       end
+
+      describe "without invites" do
+        it "does not add any memberships" do
+          expect(created_user.memberships).to be_empty
+        end
+      end
+
+      describe "with invites" do
+        let(:user) { FactoryGirl.create(:user, email: 'a@a.com') }
+        let(:team) { FactoryGirl.create(:team) }
+        let(:team2) { FactoryGirl.create(:team, captain: user) }
+        
+        before do
+          Invite.create(email: 'joe@joe.com', team: team, inviter: user) 
+          Invite.create(email: 'joe@joe.com', team: team2, inviter: user) 
+        end
+
+        it "adds new user to teams" do
+          post :create, { user: { name: "Joe", email: "joe@joe.com", password: "sosovalid", password_confirmation: "sosovalid" } }
+          joe = User.find_by(email: "joe@joe.com")
+          expect(joe.memberships.first.team).to eq team
+          expect(joe.memberships.last.team).to eq team2
+        end
+      end
+
     end
 
     describe "invalid users" do
