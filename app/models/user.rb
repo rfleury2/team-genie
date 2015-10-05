@@ -45,6 +45,14 @@ class User < ActiveRecord::Base
     user.password = SecureRandom.urlsafe_base64
     end
   end
+
+  def generate_memberships
+    invites = Invite.where({email: self.email})
+    return if invites.empty?
+    invites.each do |invite|
+      Membership.create(team: invite.team, player: self)
+    end
+  end
   
   private
 

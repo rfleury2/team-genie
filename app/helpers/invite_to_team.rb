@@ -9,14 +9,6 @@ module InviteToTeam
 		end
 	end
 
-	def self.generate_memberships(player)
-		invites = Invite.where({email: player.email})
-		return if invites.empty?
-		invites.each do |invite|
-			Membership.create(team: invite.team, player: player)
-		end
-	end
-
 	private
 
 	def self.invited_player_is_user?(email)
