@@ -26,4 +26,15 @@ RSpec.describe Membership, type: :model do
 			expect(membership.role).to eq 'player'
 		end
 	end
+
+	describe ".create_captain_membership" do
+		before { Membership.create_captain_membership(team, user) }
+
+		it "creates a captain membership to the proper team" do
+			membership = Membership.last
+			expect(membership.player).to eq user
+			expect(membership.role).to eq 'captain'
+			expect(membership.team).to eq team
+		end
+	end
 end
