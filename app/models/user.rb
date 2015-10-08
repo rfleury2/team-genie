@@ -42,15 +42,16 @@ class User < ActiveRecord::Base
       user.uid = auth['uid']
       user.name = auth['info']['name']
       user.email = auth['info']['email']
-    user.password = SecureRandom.urlsafe_base64
+      user.password = SecureRandom.urlsafe_base64
     end
   end
 
-  def generate_memberships
+  def join_teams
     invites = Invite.where({email: self.email})
     return if invites.empty?
     invites.each do |invite|
-      Membership.create(team: invite.team, player: self)
+      membership = Membership.new(team: invite.team, player: self)
+      invite.destroy if membership.save
     end
   end
   

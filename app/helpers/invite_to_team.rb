@@ -1,10 +1,10 @@
 module InviteToTeam
 	def self.call(email, team, inviter)
 		if invited_player_is_user?(email) && !team.is_member?(@player)
-			@player.memberships.create(team: team)
-			# TeamInvitationMailer
+			membership = @player.memberships.create(team: team)
+			# TeamInvitationMailer.send_invitation(membership)
 		else
-			Invite.create_from_team(team, email, inviter)
+			UserInviter.invite_new_user(team, email, inviter)
 			# UserInvite
 		end
 	end
