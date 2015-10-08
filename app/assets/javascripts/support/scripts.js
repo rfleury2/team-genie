@@ -1,4 +1,4 @@
-    <script>
+
       function initialize() {
         var mapCanvas = document.getElementById('map-canvas');
         var mapOptions = {
@@ -9,10 +9,8 @@
         var map = new google.maps.Map(mapCanvas, mapOptions)
       }
       google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
 
 
-    <script>
 	$(document).ready(function () {
 		$(document).on("scroll", onScroll);
  
@@ -50,10 +48,7 @@
 			}
 		});
 	}
-</script>
 
-
-<script type="text/javascript">
     jQuery(function ($) {
       // custom formatting example
       $('.timer').data('countToOptions', {
@@ -73,4 +68,3 @@
         $this.countTo(options);
       }
     });
-  </script>
