@@ -3,7 +3,7 @@ class MembershipsController < ApplicationController
 	end
 
 	def create
-		find_team_by_id
+		@team = find_team_by_id
 		InviteToTeam.call(membership_params['email'], @team, current_user)
 		assign_errors
 		redirect_to team_path(@team)
@@ -26,7 +26,7 @@ class MembershipsController < ApplicationController
 	end
 
 	def find_team_by_id
-		@team = Team.find_by(id: params[:team_id])
+		Team.find_by(id: params[:team_id])
 	end
 
 	def membership_params

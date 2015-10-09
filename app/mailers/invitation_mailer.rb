@@ -1,5 +1,5 @@
 class InvitationMailer < ApplicationMailer
-	def send_invitation(invite)
+	def invite_new_user(invite)
 		@user = invite.inviter
 		@team = invite.team
 		@email = invite.email
