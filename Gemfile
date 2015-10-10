@@ -37,6 +37,9 @@ gem 'font-awesome-sass', '~> 4.4.0'
 # gem 'capistrano-rails', group: :development
 gem "paperclip", "~> 4.3"
 
+gem 'rollbar', '~> 2.2.1'
+gem 'oj', '~> 2.12.14'
+
 group :test do
   gem 'shoulda-matchers'
 	gem "factory_girl_rails", "~> 4.0"
