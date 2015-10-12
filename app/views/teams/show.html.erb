@@ -1,29 +1,32 @@
-<div class="list-group col-md-4">
-  <a href="#" class="list-group-item active">
-    Games
-  </a>
-  <a href="#" class="list-group-item">Roster</a>
-  <a href="#" class="list-group-item">Team Settings</a>
-</div>
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="#">Home</a></li>
+  <li role="presentation"><a href="#">Profile</a></li>
+  <li role="presentation"><a href="#">Messages</a></li>
+</ul>
 
 <section>
-	
-
-	
+	<h2>Games</h2>
+	<span>
+		<% @team.games.each do |game| %>
+			<div><%= game.time %></div>
+		<% end %>
+		<%= render partial: 'games/new', locals: { team: @team } %>
+	</span>
 </section>
 
-<div class="cold-md-8">
-	<h3>Active Members</h3>
+<section>
+	<h2>Team Members</h2>
+	<h3>Active</h3>
 	<% @team.memberships.each do |membership| %>
 		<div><%= membership.player.name %> - <%= membership.player.email %> - $<%= membership.amount_owed %></div>
 	<% end %>
 
-	<h3>Invited Members</h3>
+	<h3>Invited</h3>
 	<% @team.invites.each do |invite| %>
 		<div><%= invite.email %></div>
 	<% end %>
 
-	<div>
+	<span>
 		<%= render partial: 'memberships/new', locals: { team: @team } %>
-	</div>
-</div>
+	</span>
+</section>

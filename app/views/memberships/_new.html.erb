@@ -2,7 +2,6 @@
 	<div class="col-md-12">
 		<div class="col-md-6 col-sm-12">
       <% if @errors %> 
-        yo
         <%= render partial: 'shared/errors', locals: { errors: @errors } %>
       <% end %>
       <%= form_for :membership, url: team_memberships_path(team) do |membership| %>
