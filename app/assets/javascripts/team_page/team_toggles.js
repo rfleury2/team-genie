@@ -1,3 +1,4 @@
+
 $(document).ready( function() {
 	$(document).on('click', '#roster', function(e) {
 		changeTabs(this)
@@ -20,5 +21,10 @@ function changeTabs(selectedTab) {
 			$(tabs[i]).removeClass('active')
 		}
 		$(selectedTab).addClass('active')
+		clearContents()
 	}
+}
+
+function clearContents() {
+	$("#content").empty()
 }

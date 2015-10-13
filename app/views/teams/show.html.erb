@@ -4,7 +4,7 @@
   <li role="presentation" id="settings" class="team-nav"><a href="#">Settings</a></li>
 </ul>
 
-<section>
+<div id="content">
 	<h2>Games</h2>
 	<span>
 		<% @team.games.each do |game| %>
@@ -12,8 +12,4 @@
 		<% end %>
 		<%= render partial: 'games/new', locals: { team: @team } %>
 	</span>
-</section>
-
-<section>
-	
-</section>
+</div>
