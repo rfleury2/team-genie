@@ -1,7 +1,7 @@
-<ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a href="#">Home</a></li>
-  <li role="presentation"><a href="#">Profile</a></li>
-  <li role="presentation"><a href="#">Messages</a></li>
+<ul class="nav nav-tabs nav-justified">
+  <li role="presentation" class="active"><a href="#">Games</a></li>
+  <li role="presentation"><%= link_to "Roster", team_roster_path(@team), js: true %></li>
+  <li role="presentation"><a href="#">Settings</a></li>
 </ul>
 
 <section>
@@ -15,18 +15,5 @@
 </section>
 
 <section>
-	<h2>Team Members</h2>
-	<h3>Active</h3>
-	<% @team.memberships.each do |membership| %>
-		<div><%= membership.player.name %> - <%= membership.player.email %> - $<%= membership.amount_owed %></div>
-	<% end %>
-
-	<h3>Invited</h3>
-	<% @team.invites.each do |invite| %>
-		<div><%= invite.email %></div>
-	<% end %>
-
-	<span>
-		<%= render partial: 'memberships/new', locals: { team: @team } %>
-	</span>
+	
 </section>

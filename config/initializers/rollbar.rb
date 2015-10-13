@@ -6,7 +6,7 @@ Rollbar.configure do |config|
   config.access_token = Figaro.env.ROLLBAR_ACCESS_TOKEN || ENV['ROLLBAR_ACCESS_TOKEN']
 
   # Here we'll disable in 'test':
-  if Rails.env.test?
+  if Rails.env.test? || Rails.env.development?
     config.enabled = false
   end
 
