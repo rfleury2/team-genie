@@ -41,6 +41,8 @@ gem "image_magick"
 gem 'rollbar', '~> 2.2.1'
 gem 'oj', '~> 2.12.14'
 
+gem 'angularjs-rails'
+
 group :test do
   gem 'shoulda-matchers'
 	gem "factory_girl_rails", "~> 4.0"

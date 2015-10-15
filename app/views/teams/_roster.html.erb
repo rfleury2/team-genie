@@ -1,14 +1,27 @@
-<h2>Team Members</h2>
-<h3>Active</h3>
-<% team.memberships.each do |membership| %>
-	<div><%= membership.player.name %> - <%= membership.player.email %> - $<%= membership.amount_owed %></div>
-<% end %>
+<div ng-controller='ngRosterCtrl'>
+	<h2>Team Members</h2>
+	<h3>Active</h3>
 
-<h3>Invited</h3>
-<% team.invites.each do |invite| %>
-	<div><%= invite.email %></div>
-<% end %>
+	<!-- Must change the back end to return players.  Makes more sense that way. -->
+	<div ng-repeat='player in players'>
+		{{ player.name }} - {{ player.email }} - {{ player.amount_owed | currency : '$' }}
+	</div>
 
-<span>
-	<%= render partial: 'memberships/new', locals: { team: team } %>
-</span>
+	<% team.memberships.each do |membership| %>
+		<div><%= membership.player.name %> - <%= membership.player.email %> - $<%= membership.amount_owed %></div>
+	<% end %>
+
+	<h3>Invited</h3>
+
+	<div ng-repeat='invite in invites'>
+		{{ invite.email }}
+	</div>
+
+	<% team.invites.each do |invite| %>
+		<div><%= invite.email %></div>
+	<% end %>
+
+	<span>
+		<%= render partial: 'memberships/new', locals: { team: team } %>
+	</span>
+</div>
