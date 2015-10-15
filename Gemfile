@@ -42,6 +42,8 @@ gem 'rollbar', '~> 2.2.1'
 gem 'oj', '~> 2.12.14'
 
 gem 'angularjs-rails'
+gem 'responders'
+gem 'ng-rails-csrf'
 
 group :test do
   gem 'shoulda-matchers'
