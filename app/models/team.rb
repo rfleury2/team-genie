@@ -6,6 +6,7 @@ class Team < ActiveRecord::Base
 	has_many :memberships
 	has_many :players, through: :memberships
 	has_many :invites
+	has_many :games
 
 	# Validations
 	validates_presence_of	:name

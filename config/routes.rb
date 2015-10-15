@@ -15,14 +15,14 @@ Rails.application.routes.draw do
   resources :users
   resources :reset_passwords, only: [:new, :create, :edit, :update]
   resources :teams do
+    get 'roster', to: 'teams#roster'
     resources :memberships
+    resources :games
   end
 
   resource :auth, only: [:new, :create, :destroy]
   get 'auth/facebook/callback', to: 'auths#facebook_auth'
   get 'auth/failure', to: redirect('/')
-
-  get 'template' => 'welcome#template'
 
   # Example resource route with options:
   #   resources :products do

@@ -21,16 +21,16 @@ class TeamsController < ApplicationController
 	end
 
 	def show
-		find_team_by_id
+		@team = find_team_by_id
 	end
 
 	def edit
-		find_team_by_id
+		@team = find_team_by_id
 		render partial: 'edit', locals: { team: @team }
 	end
 
 	def update
-		find_team_by_id
+		@team = find_team_by_id
 		if @team
 			@team.update_attributes(team_params)
 			redirect_to team_path(@team)
@@ -40,9 +40,14 @@ class TeamsController < ApplicationController
 	end
 
 	def destroy
-		find_team_by_id
+		@team = find_team_by_id
 		@team.destroy
 		redirect_to root_path
+	end
+
+	def roster
+		@team = find_team_by_team_id
+		render partial: 'teams/roster', locals: { team: @team }
 	end
 
 	LIST_OF_SPORTS = ['Soccer', 'Flag Football', 'Basketball', 'Softball', 'Kickball', 'Other']
@@ -58,6 +63,10 @@ class TeamsController < ApplicationController
 	end
 
 	def find_team_by_id
-		@team = Team.find_by(id: params[:id])
+		Team.find_by(id: params[:id])
+	end
+
+	def find_team_by_team_id
+		Team.find_by(id: params[:team_id])
 	end
 end
