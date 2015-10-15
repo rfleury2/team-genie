@@ -4,7 +4,7 @@
   <li role="presentation" id="settings" class="team-nav"><a href="#">Settings</a></li>
 </ul>
 
-<section ng-controller="ngGamesCtrl" id="content">
+<section ng-hide='true' ng-controller="ngGamesCtrl" id="content">
 	<h2>Games</h2>
 	<span>
 		<% @team.games.each do |game| %>
@@ -12,8 +12,10 @@
 		<% end %>
 
 		<div ng-repeat="game in games">
-			{{ game.time }}
+			<!-- {{ game.time }} -->
 		</div>
 		<%= render partial: 'games/new', locals: { team: @team } %>
 	</span>
 </section>
+
+<%= render partial: 'teams/roster', locals: { team: @team } %>
