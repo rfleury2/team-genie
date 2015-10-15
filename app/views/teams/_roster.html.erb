@@ -7,7 +7,6 @@
 		{{ player.name }} - {{ player.email }} - {{ player.amount_owed | currency : '$' }}
 	</div>
 
-
 	<% team.memberships.each do |membership| %>
 		<div><%= membership.player.name %> - <%= membership.player.email %> - $<%= membership.amount_owed %></div>
 	<% end %>
