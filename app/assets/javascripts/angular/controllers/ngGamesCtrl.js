@@ -1,7 +1,11 @@
-ngTeamGenie.controller('ngGamesCtrl', function NgGamesCtrl($scope) {
-	$scope.games = [
-		{ time: 'noon' },
-		{ time: 'midnight' },
-		{ time: 'three' }
-	]
+ngTeamGenie.controller('ngGamesCtrl', function NgGamesCtrl($scope, GamesRoutes) {
+	// GET - INDEX
+  var allGames = GamesRoutes.query();
+	$scope.games = allGames;
+
+	// POST - CREATE
+	$scope.addGame = function() {
+		var newlyCreatedGame = GamesRoutes.save({time: $scope.newGame.time})
+		$scope.games.push(newlyCreatedGame)
+	}
 });
