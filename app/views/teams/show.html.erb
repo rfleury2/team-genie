@@ -4,18 +4,6 @@
   <li role="presentation" id="settings" class="team-nav"><a href="#">Settings</a></li>
 </ul>
 
-<section ng-controller="ngGamesCtrl" id="content">
-	<h2>Games</h2>
-	<ul class="list-group">
-		<li ng-repeat="game in games" class="list-group-item">
-			{{ game.time | date : 'short' }}
-			<button ng-click='editGame()' class="btn btn-info">Edit (TBI)</button>
-			<button ng-click='deleteGame()' class="btn btn-danger">Delete (TBI)</button>
-		</li>
-	</ul>
-
-	<%= render partial: 'games/new', locals: { team: @team } %>
-
-</section>
+<%= render partial: 'games/index' %>
 
 <%= render partial: 'teams/roster', locals: { team: @team } %>
