@@ -15,7 +15,6 @@ Rails.application.routes.draw do
   resources :users
   resources :reset_passwords, only: [:new, :create, :edit, :update]
   resources :teams do
-    get 'roster', to: 'teams#roster'
     resources :memberships
     resources :games, only: [:index, :create, :update, :destroy]
   end

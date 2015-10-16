@@ -1,4 +1,13 @@
 class MembershipsController < ApplicationController
+	respond_to :json
+
+	# Roster route
+	def index
+		team = find_team_by_id
+		@memberships = team.memberships
+		respond_with { @memberships }
+	end
+
 	def new
 	end
 

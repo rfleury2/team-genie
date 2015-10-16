@@ -45,11 +45,6 @@ class TeamsController < ApplicationController
 		redirect_to root_path
 	end
 
-	def roster
-		@team = find_team_by_team_id
-		render partial: 'teams/roster', locals: { team: @team }
-	end
-
 	LIST_OF_SPORTS = ['Soccer', 'Flag Football', 'Basketball', 'Softball', 'Kickball', 'Other']
 
 	private 
