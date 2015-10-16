@@ -45,6 +45,11 @@ class TeamsController < ApplicationController
 		redirect_to root_path
 	end
 
+	def invites
+		team = find_team_by_team_id
+		render json: team.invites
+	end
+
 	LIST_OF_SPORTS = ['Soccer', 'Flag Football', 'Basketball', 'Softball', 'Kickball', 'Other']
 
 	private 
