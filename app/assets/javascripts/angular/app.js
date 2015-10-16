@@ -1,4 +1,4 @@
-var ngTeamGenie = angular.module('ngTeamGenie', ['ngResource'])
+var ngTeamGenie = angular.module('ngTeamGenie', ['ngResource', 'ng-rails-csrf'])
 	.config(function() {
 
 	});

@@ -4,18 +4,6 @@
   <li role="presentation" id="settings" class="team-nav"><a href="#">Settings</a></li>
 </ul>
 
-<section ng-hide='true' ng-controller="ngGamesCtrl" id="content">
-	<h2>Games</h2>
-	<span>
-		<% @team.games.each do |game| %>
-			<div><%= game.time %></div>
-		<% end %>
-
-		<div ng-repeat="game in games">
-			<!-- {{ game.time }} -->
-		</div>
-		<%= render partial: 'games/new', locals: { team: @team } %>
-	</span>
-</section>
+<%= render partial: 'games/index' %>
 
 <%= render partial: 'teams/roster', locals: { team: @team } %>

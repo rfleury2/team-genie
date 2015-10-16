@@ -1,13 +1,6 @@
-<div class="col-md-12">
-	<div class="col-md-6 col-sm-12">
-    <% if @errors %> 
-      <%= render partial: 'shared/errors', locals: { errors: @errors } %>
-    <% end %>
-    <%= form_for :game, url: team_games_path(team) do |game| %>
-      <div class="form-group">                                 
-        <%= game.datetime_select :time, ampm: true, class: "form-control form-effect" %>
-      </div>
-      <%= game.submit "Add new game", class: "btn btn-default btn-sub" %>
-    <% end %>
-	</div>
-</div>
+<form ng-submit="addGame()">
+  <div class="form-group"> 
+    <input ng-model='newGame.time' type='datetime-local', ampm: true, class: "form-control form-effect">                                
+  </div>
+    <input type="submit" value="Add new game" class="btn btn-default btn-success">
+<form>

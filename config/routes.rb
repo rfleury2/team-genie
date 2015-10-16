@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resources :teams do
     get 'roster', to: 'teams#roster'
     resources :memberships
-    resources :games
+    resources :games, only: [:index, :create, :update, :destroy]
   end
 
   resource :auth, only: [:new, :create, :destroy]
