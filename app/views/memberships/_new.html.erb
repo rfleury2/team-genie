@@ -1,15 +1,10 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="col-md-6 col-sm-12">
-      <% if @errors %> 
-        <%= render partial: 'shared/errors', locals: { errors: @errors } %>
-      <% end %>
-      <%= form_for :membership, url: team_memberships_path(team) do |membership| %>
-        <div class="form-group">                                 
-          <%= membership.text_field :email, class: "form-control form-effect", placeholder: "Email" %>
-        </div>
-        <%= membership.submit "Add new player", class: "btn btn-default btn-sub" %>
-      <% end %>
+      <form ng-submit='addPlayer()'>
+        <input ng-model='inviteEmail' type='email' class="form-control form-effect">                                
+        <input type="submit" ng-submit="inviteEmail = null" value="Invite to Team" class="btn btn-default btn-success">
+      </form>  
 		</div>
   </div>
 </div>

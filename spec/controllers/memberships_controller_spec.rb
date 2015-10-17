@@ -10,7 +10,7 @@ RSpec.describe MembershipsController, type: :controller do
 			before do
 				request = post :create, {
 					team_id: team.id,
-					membership: { email: user.email }
+					email: user.email
 				}
 			end
 
@@ -20,17 +20,13 @@ RSpec.describe MembershipsController, type: :controller do
 				expect(membership.player).to eq user
 				expect(membership.role).to eq 'player'
 			end
-
-			it "redirects to team path" do
-				expect(request).to redirect_to team_path(team)
-			end
   	end
 
   	describe "new user" do
 			before do
 				request = post :create, {
 					team_id: team.id,
-					membership: { email: 'new@user.com' }
+					email: 'new@user.com'
 				}
 			end
 
@@ -44,10 +40,6 @@ RSpec.describe MembershipsController, type: :controller do
 			end
 
 			# TODO: Verify mailer was fired off
-
-			it "redirects to team path" do
-				expect(request).to redirect_to team_path(team)
-			end
   	end
 	end
 end

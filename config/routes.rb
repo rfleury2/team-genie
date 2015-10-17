@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :reset_passwords, only: [:new, :create, :edit, :update]
   resources :teams do
     get "invites"
+    post "invites"
     resources :memberships
     resources :games, only: [:index, :create, :update, :destroy]
   end

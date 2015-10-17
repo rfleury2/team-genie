@@ -6,4 +6,6 @@ class Invite < ActiveRecord::Base
     presence: true,
     format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/ }
   }
+
+  validates :email, uniqueness: { scope: :team_id }
 end
