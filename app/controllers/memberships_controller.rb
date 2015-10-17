@@ -1,12 +1,22 @@
 class MembershipsController < ApplicationController
+	respond_to :json
+
+	# Roster route
+	def index
+		team = find_team_by_id
+		# TODO: address performance issue
+		@memberships = team.memberships
+		respond_with { @memberships }
+	end
+
 	def new
 	end
 
 	def create
 		@team = find_team_by_id
-		InviteToTeam.call(membership_params['email'], @team, current_user)
+		@invite = InviteToTeam.call(membership_params['email'], @team, current_user)
 		assign_errors
-		redirect_to team_path(@team)
+		render :nothing => true, :status => 200
 	end
 
 	private 
@@ -30,6 +40,6 @@ class MembershipsController < ApplicationController
 	end
 
 	def membership_params
-		params.require(:membership).permit(:email)
+		params.permit(:email)
 	end
 end

@@ -1,0 +1,18 @@
+<div ng-controller='ngRosterCtrl'>
+	<h2>Team Members</h2>
+	<h3>Active</h3>
+
+	<div ng-repeat='membership in memberships'>
+		{{ membership.player.name }} - {{ membership.player.email }} - {{ membership.amount_owed | currency : '$' }}
+	</div>
+
+	<h3>Invited</h3>
+
+	<div ng-repeat='invite in invites'>
+		{{ invite.email }}
+	</div>
+
+	<span>
+		<%= render partial: 'memberships/new' %>
+	</span>
+</div>

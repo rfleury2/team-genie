@@ -1,13 +1,17 @@
-ngTeamGenie.controller('ngRosterCtrl', function ngRosterCtrl($scope) {
-	$scope.players = [
-		{ name: 'Chuck', email: 'hello@hello.com', amount_owed: 1 },
-		{ name: 'Carlos', email: 'hello@hello.com', amount_owed: 42.2 },
-		{ name: 'Charlie', email: 'hello@hello.com', amount_owed: 300 }
-	]
+ngTeamGenie.controller('ngRosterCtrl', function ngRosterCtrl($scope, RosterRoutes, InviteRoutes, MembershipRoutes) {
+	// var memberships = ;
+	$scope.memberships = RosterRoutes.query();
 
-	$scope.invites = [
-		{ email: 'hello@hello.com' },
-		{ email: 'hello@hello.com' },
-		{ email: 'hello@hello.com' }
-	]
+	// var invites = ;
+	$scope.invites = InviteRoutes.query();
+
+	$scope.addPlayer = function() {
+		MembershipRoutes.save({email: $scope.inviteEmail});
+		$scope.refreshRoster();
+	}	
+
+	$scope.refreshRoster = function() {
+		$scope.invites = InviteRoutes.query();
+		$scope.memberships = RosterRoutes.query();
+	}
 });

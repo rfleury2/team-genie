@@ -14,7 +14,7 @@ class GamesController < ApplicationController
 		if game.save
 			render :json => game
 		else
-			redirect_to :back, game_create: 'fail'
+			redirect_to :back
 		end
 	end
 

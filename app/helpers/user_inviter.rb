@@ -3,8 +3,6 @@ module UserInviter
 		invite = Invite.new(team: team, email: email, inviter: inviter)
 		if invite.save
 			InvitationMailer.invite_new_user(invite).deliver_later
-		else
-			redirect_to team_path(team)
 		end
 	end
 end

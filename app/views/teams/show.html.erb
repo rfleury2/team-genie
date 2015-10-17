@@ -4,6 +4,6 @@
   <li role="presentation" id="settings" class="team-nav"><a href="#">Settings</a></li>
 </ul>
 
-<%= render partial: 'games/index' %>
+<%= render partial: 'memberships/index', locals: { team: @team } %>
 
-<%= render partial: 'teams/roster', locals: { team: @team } %>
+<%= render partial: 'games/index' %>
