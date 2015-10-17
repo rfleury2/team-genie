@@ -14,7 +14,7 @@ class MembershipsController < ApplicationController
 
 	def create
 		@team = find_team_by_id
-		@invite = InviteToTeam.call(membership_params['email'], @team, current_user)
+		InviteToTeam.call(membership_params['email'], @team, current_user)
 		assign_errors
 		render :nothing => true, :status => 200
 	end
