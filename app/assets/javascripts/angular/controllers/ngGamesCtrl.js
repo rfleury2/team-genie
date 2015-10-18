@@ -12,17 +12,15 @@ ngTeamGenie.controller('ngGamesCtrl', function NgGamesCtrl($scope, GamesRoutes) 
 	// DELETE - DELETE
 	$scope.deleteGame = function(game) {
 		GamesRoutes.remove(game)
-		// TODO: Add "if successful logic"
 		$scope.updateGames(game)
+		// TODO: Add "if successful logic"
 	}
 
-	$scope.updateGames = function(removedGame) {
+	$scope.updateGames = function(game) {
 		for (var i = 0; i < $scope.games.length; i++) { 
-			if($scope.games[i].id === removedGame.id) {
+			if($scope.games[i].id === game.id) {
 				$scope.games.splice(i, 1)
-			}
-    	
+			}	
 		}
-
 	}
 });
