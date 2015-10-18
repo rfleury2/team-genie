@@ -2,15 +2,19 @@
 	<h2>Team Members</h2>
 	<h3>Active</h3>
 
-	<div ng-repeat='membership in memberships'>
-		{{ membership.player.name }} - {{ membership.player.email }} - {{ membership.amount_owed | currency : '$' }}
-	</div>
+	<ul class="list-group">
+		<li ng-repeat='membership in memberships' class="list-group-item">
+			<%= render partial: 'memberships/show' %>
+		</li>
+	</ul>
 
 	<h3>Invited</h3>
 
-	<div ng-repeat='invite in invites'>
+	<ul class="list-group">
+		<li ng-repeat='invite in invites' class="list-group-item">
 		{{ invite.email }}
-	</div>
+		</li>
+	</ul>
 
 	<span>
 		<%= render partial: 'memberships/new' %>

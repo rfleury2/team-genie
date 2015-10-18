@@ -1,9 +1,16 @@
-<ul class="nav nav-tabs nav-justified">
-  <li role="presentation" id="games" class="team-nav active"><a href="#">Games</a></li>
-  <li role="presentation" id="roster" class="team-nav"><a href="#">Roster</a></li>
-  <li role="presentation" id="settings" class="team-nav"><a href="#">Settings</a></li>
-</ul>
+<div ng-controller='ngTeamTabsCtrl'>
+	<ul class="nav nav-tabs nav-justified">
+	  <li role="presentation" id="games" class="team-tab active" ng-click="changeTab('games')"><a href="#">Games</a></li>
+	  <li role="presentation" id="roster" class="team-tab" ng-click="changeTab('roster')"><a href="#">Roster</a></li>
+	  <li role="presentation" id="settings" class="team-tab" ng-click="changeTab('settings')"><a href="#">Settings</a></li>
+	</ul>
 
-<%= render partial: 'memberships/index', locals: { team: @team } %>
+	<div ng-show="isActive('games')">
+		<%= render partial: 'games/index' %>
+	</div>
+	
+	<div ng-show="isActive('roster')">
+		<%= render partial: 'memberships/index' %>
+	</div>
 
-<%= render partial: 'games/index' %>
+</div>

@@ -1,0 +1,14 @@
+<span>
+	{{ membership.player.name }}
+</span>
+ - 
+<span>
+	{{ membership.player.email }} - {{ membership.id }}
+</span>
+ - 
+<span>
+	{{ membership.amount_owed | currency : '$' }}
+</span>
+<span>
+	<button class='btn btn-danger' ng-click="removeFromRoster(membership)">Remove Player</button>
+</span>
