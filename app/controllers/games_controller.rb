@@ -22,11 +22,18 @@ class GamesController < ApplicationController
 	end
 
 	def destroy
+		game = find_game_by_id(params[:id])
+		game.destroy
+		render :json => game
 	end
 
 	private
 
 	def find_team_by_id(id)
 		Team.find_by(id: id)
+	end
+
+	def find_game_by_id(id)
+		Game.find_by(id: id)
 	end
 end
