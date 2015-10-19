@@ -1,10 +1,10 @@
-<section ng-controller="ngGamesCtrl" id="content">
+<div ng-controller="ngGamesCtrl">
 	<h2>Games</h2>
 	<ul class="list-group">
 		<li ng-repeat="game in games" class="list-group-item">
 			{{ game.time | date : 'short' }}
-			<button ng-click='deleteGame(game)' method='delete' class="btn btn-danger">Delete</button>
+			<button ng-click='deleteGame(game)' class="btn btn-danger">Delete</button>
 		</li>
 	</ul>
 	<%= render partial: 'games/new' %>
-</section>
+</div>
