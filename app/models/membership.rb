@@ -1,7 +1,7 @@
 class Membership < ActiveRecord::Base
-	has_many :games, through: :membership
 	belongs_to :player, class_name: "User"
 	belongs_to :team
+	has_many :games, through: :team
 
 
 	validates_presence_of :team, :player
