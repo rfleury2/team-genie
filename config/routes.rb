@@ -18,7 +18,9 @@ Rails.application.routes.draw do
     get "invites"
     post "invites"
     resources :memberships
-    resources :games, only: [:index, :create, :update, :destroy]
+    resources :games, only: [:index, :create, :update, :destroy] do
+      resources :rsvps, only: [:update]
+    end
   end
 
   resource :auth, only: [:new, :create, :destroy]
