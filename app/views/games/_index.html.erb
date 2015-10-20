@@ -2,8 +2,7 @@
 	<h2>Games</h2>
 	<ul class="list-group">
 		<li ng-repeat="game in games" class="list-group-item">
-			{{ game.time | date : 'short' }}
-			<button ng-click='deleteGame(game)' class="btn btn-danger">Delete</button>
+			<%= render partial: 'games/show' %>
 		</li>
 	</ul>
 	<%= render partial: 'games/new' %>

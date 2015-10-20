@@ -1,25 +1,50 @@
-ngTeamGenie.controller('ngGamesCtrl', function NgGamesCtrl($scope, GamesRoutes) {
+ngTeamGenie.controller('ngGamesCtrl', function NgGamesCtrl($scope, GamesRoutes, RsvpRoutes) {
 	// GET - INDEX
-  var allGames = GamesRoutes.query();
-	$scope.games = allGames;
+  $scope.games = GamesRoutes.query();
 
 	// POST - CREATE
 	$scope.addGame = function() {
-		var newlyCreatedGame = GamesRoutes.save({time: $scope.newGame.time})
-		$scope.games.push(newlyCreatedGame)
+		var newlyCreatedGame = GamesRoutes.save({time: $scope.newGame.time});
+		$scope.games.push(newlyCreatedGame);
 	}
 
 	// DELETE - DELETE
 	$scope.deleteGame = function(game) {
 		GamesRoutes.remove(game)
-		$scope.updateGames(game)
+		$scope.updateGames(game);
 		// TODO: Add "if successful logic"
 	}
 
 	$scope.updateGames = function(game) {
-		for (var i = 0; i < $scope.games.length; i++) { 
+		for (var i = 0; i < $scope.games.length; i++) {
 			if($scope.games[i].id === game.id) {
-				$scope.games.splice(i, 1)
+				$scope.games.splice(i, 1);
+			}	
+		}
+	}
+
+	
+	////////////   RSVP   //////////////
+	$scope.toggleRsvps = function(game) {
+		gameIndex = $scope.games.indexOf(game);
+		console.log(gameIndex);
+		if($scope.games[gameIndex].active) {
+			$scope.games[gameIndex].active = false;
+			return
+		} else {
+			$scope.getRsvps(game.id)
+		}
+
+	}
+
+	// RSVP index
+	$scope.getRsvps = function(gameId) {
+		rsvps = RsvpRoutes.query({ gameId: gameId });
+		for (var i = 0; i < $scope.games.length; i++) { 
+			if($scope.games[i].id === gameId) {
+				$scope.games[i].rsvps = rsvps;
+				$scope.games[i].active = true;
+				return;
 			}	
 		}
 	}
