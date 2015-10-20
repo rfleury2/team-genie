@@ -13,6 +13,13 @@ class RsvpsController < ApplicationController
 		respond_with { @rsvp }
 	end
 
+	def accept
+
+	end
+
+	def decline 
+	end
+
 	private
 
 	def rsvp_params

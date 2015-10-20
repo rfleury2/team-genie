@@ -19,7 +19,10 @@ Rails.application.routes.draw do
     post "invites"
     resources :memberships
     resources :games, only: [:index, :create, :update, :destroy] do
-      resources :rsvps, only: [:index, :show ,:update]
+      resources :rsvps, only: [:index, :show ,:update] do
+        get "accept"
+        get "decline"
+      end
     end
   end
 

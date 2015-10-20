@@ -32,6 +32,8 @@ gem 'figaro'
 
 gem 'faker'
 
+gem 'sidekiq'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

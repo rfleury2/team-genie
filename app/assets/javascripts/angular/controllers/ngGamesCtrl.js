@@ -27,7 +27,6 @@ ngTeamGenie.controller('ngGamesCtrl', function NgGamesCtrl($scope, GamesRoutes, 
 	////////////   RSVP   //////////////
 	$scope.toggleRsvps = function(game) {
 		gameIndex = $scope.games.indexOf(game);
-		console.log(gameIndex);
 		if($scope.games[gameIndex].active) {
 			$scope.games[gameIndex].active = false;
 			return
