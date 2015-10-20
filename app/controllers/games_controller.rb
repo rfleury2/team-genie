@@ -12,6 +12,7 @@ class GamesController < ApplicationController
 		time = TimeConverter.call(params[:time])
 		game = team.games.new(time: time)
 		if game.save
+			RsvpGenerator.create_from_game(game)
 			render :json => game
 		else
 			redirect_to :back
