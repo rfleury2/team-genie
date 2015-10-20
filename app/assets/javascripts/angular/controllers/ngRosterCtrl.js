@@ -3,7 +3,6 @@ ngTeamGenie.controller('ngRosterCtrl', function ngRosterCtrl($scope, RosterRoute
 	$scope.invites = InviteRoutes.query();
 
 	$scope.addPlayer = function() {
-		console.log('called here')
 		RosterRoutes.save({email: $scope.inviteEmail});
 		$scope.refreshRoster();
 	}	
