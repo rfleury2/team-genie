@@ -15,5 +15,4 @@
 //= require angular
 //= require ng-rails-csrf
 //= require angular-resource
-//= require twitter/bootstrap
 //= require_tree .
