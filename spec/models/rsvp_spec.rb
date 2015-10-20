@@ -6,4 +6,6 @@ RSpec.describe Rsvp, type: :model do
 	
 	it { should belong_to :game }
 	it { should belong_to :membership }
+
+	# TODO: Uniqueness scoped test
 end
