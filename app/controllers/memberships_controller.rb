@@ -9,9 +9,6 @@ class MembershipsController < ApplicationController
 		respond_with { @memberships }
 	end
 
-	def new
-	end
-
 	def create
 		@team = find_team_by_id
 		InviteToTeam.call(membership_params['email'], @team, current_user)

@@ -5,9 +5,15 @@ RSpec.describe MembershipsController, type: :controller do
   let(:team) { FactoryGirl.create(:team) }
   before { allow(controller).to receive(:current_user) { user } }
 
+
+  describe "GET index" do
+  	pending ""
+  end
+
   describe "POST create" do
   	describe "existing user" do
 			before do
+				team.games.create(time: DateTime.now)
 				request = post :create, {
 					team_id: team.id,
 					email: user.email
@@ -19,6 +25,14 @@ RSpec.describe MembershipsController, type: :controller do
 				expect(membership.team).to eq team
 				expect(membership.player).to eq user
 				expect(membership.role).to eq 'player'
+			end
+
+			it "creates rsvps for games" do
+				game = team.games.first
+				rsvp = Rsvp.last
+				membership = Membership.find_by(player: user)
+				expect(rsvp.game).to eq game
+				expect(rsvp.membership).to eq membership
 			end
   	end
 
@@ -38,8 +52,16 @@ RSpec.describe MembershipsController, type: :controller do
 				invite = Invite.find_by(email: 'new@user.com')
 				expect(invite.team).to eq team
 			end
-
 			# TODO: Verify mailer was fired off
   	end
+	end
+
+	describe "DELETE destroy" do
+		# before do
+		# 	membership = user.memberships.create(team: team)
+		# 	request = delete :destroy, { id: membership.id }
+		# end
+
+		it "pending"
 	end
 end

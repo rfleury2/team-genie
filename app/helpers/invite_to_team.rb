@@ -2,7 +2,8 @@ module InviteToTeam
 	def self.call(email, team, inviter)
 		if invited_player_is_user?(email)
 			return if team.is_member?(@player)
-			@player.memberships.create(team: team)
+			membership = @player.memberships.create(team: team)
+			RsvpGenerator.create_from_membership(membership)
 			# TODO: Team invitation mailer
 		else
 			UserInviter.invite_new_user(team, email, inviter)
