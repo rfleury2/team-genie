@@ -16,21 +16,36 @@ ngTeamGenie.controller('ngGamesCtrl', function NgGamesCtrl($scope, GamesRoutes, 
 	}
 
 	$scope.updateGames = function(game) {
-		for (var i = 0; i < $scope.games.length; i++) { 
+		for (var i = 0; i < $scope.games.length; i++) {
 			if($scope.games[i].id === game.id) {
 				$scope.games.splice(i, 1);
 			}	
 		}
 	}
 
-	// RSVP index
-	$scope.getRsvps = function(game_id) {
-		rsvps = RsvpRoutes.query({ game_id: game_id });
-		for (var i = 0; i < $scope.games.length; i++) { 
-			if($scope.games[i].id === game_id) {
-				$scope.games[i].rsvps = rsvps;
-			}	
+	
+	////////////   RSVP   //////////////
+	$scope.toggleRsvps = function(game) {
+		gameIndex = $scope.games.indexOf(game);
+		console.log(gameIndex);
+		if($scope.games[gameIndex].active) {
+			$scope.games[gameIndex].active = false;
+			return
+		} else {
+			$scope.getRsvps(game.id)
 		}
 
+	}
+
+	// RSVP index
+	$scope.getRsvps = function(gameId) {
+		rsvps = RsvpRoutes.query({ gameId: gameId });
+		for (var i = 0; i < $scope.games.length; i++) { 
+			if($scope.games[i].id === gameId) {
+				$scope.games[i].rsvps = rsvps;
+				$scope.games[i].active = true;
+				return;
+			}	
+		}
 	}
 });

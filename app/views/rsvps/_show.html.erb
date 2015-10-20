@@ -1,0 +1,13 @@
+{{ rsvp.player.name }} - {{ rsvp.response }} - {{ rsvp.comment }}
+
+<span ng-controller='ngRsvpCtrl'>
+	<button ng-hide='editingMode' ng-click='toggleEditing()' ng-click='toggleRsvpEdit(rsvp.id)' class="btn btn-primary">Change RSVP</button>
+	<div ng-show='editingMode'>
+		<button ng-click='updateRsvp("accept", newComment)' class="btn btn-success">Attending</button>
+		<button ng-click='updateRsvp("decline", newComment)' class="btn btn-warning">Not Attending</button>
+		<div>
+			Optional: <input type='text' ng-model='newComment' placeholder='My comment'></input type='text'>
+		</div>
+	</div>
+</span>
+

@@ -7,13 +7,17 @@ class RsvpsController < ApplicationController
 		respond_with { @rsvps }
 	end
 
-	def show
-	end
-
 	def update
+		rsvp = find_rsvp(params[:id])
+		@rsvp = rsvp.update_attributes(rsvp_params)
+		respond_with { @rsvp }
 	end
 
 	private
+
+	def rsvp_params
+		params.require(:rsvp).permit(:response, :comment)
+	end
 
 	def find_membership(team_id)
 	end
@@ -21,4 +25,9 @@ class RsvpsController < ApplicationController
 	def find_game(game_id)
 		Game.find_by(id: game_id)
 	end
+
+	def find_rsvp(rsvp_id)
+		Rsvp.find_by(id: rsvp_id)
+	end
+
 end

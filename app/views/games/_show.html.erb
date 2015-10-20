@@ -1,3 +1,7 @@
 {{ game.time | date : 'short' }}
 <button ng-click='deleteGame(game)' class="btn btn-danger">Delete</button>
-<button ng-click='getRsvps(game.id)' class="btn btn-primary">See RSVPs</button>
+<!-- Implement to change the 'See RSVPs' to 'Hide RSVPs' -->
+<button ng-click='toggleRsvps(game)' class="btn btn-primary">See RSVPs</button>
+<div ng-show='game.active'>
+	<%= render partial: 'rsvps/index' %>
+</div>
