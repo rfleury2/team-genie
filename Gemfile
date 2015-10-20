@@ -33,6 +33,7 @@ gem 'figaro'
 gem 'faker'
 
 gem 'sidekiq'
+gem 'sinatra', :require => nil
 
 # Use Unicorn as the app server
 # gem 'unicorn'

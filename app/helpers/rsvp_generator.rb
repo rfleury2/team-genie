@@ -3,7 +3,7 @@ module RsvpGenerator
 	def self.create_from_game(game)
 		game.team.memberships.each do |membership|
 			rsvp = game.rsvps.create(membership: membership)
-			RsvpReminderScheduler.schedule_reminders(rsvp)
+			RsvpReminderWorker.schedule_reminders(rsvp)
 		end
 	end
 
@@ -11,7 +11,7 @@ module RsvpGenerator
 	def self.create_from_membership(membership)
 		membership.games.each do |game|
 			rsvp = game.rsvps.create(membership: membership)
-			RsvpReminderScheduler.schedule_reminders(rsvp)
+			RsvpReminderWorker.schedule_reminders(rsvp)
 		end
 	end
 end

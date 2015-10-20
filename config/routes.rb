@@ -30,6 +30,9 @@ Rails.application.routes.draw do
   get 'auth/facebook/callback', to: 'auths#facebook_auth'
   get 'auth/failure', to: redirect('/')
 
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+
   # Example resource route with options:
   #   resources :products do
   #     member do

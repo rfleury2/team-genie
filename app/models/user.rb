@@ -44,6 +44,7 @@ class User < ActiveRecord::Base
       user.email = auth['info']['email']
       user.password = SecureRandom.urlsafe_base64
     end
+    join_teams
   end
 
   def join_teams
