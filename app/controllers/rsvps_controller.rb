@@ -14,7 +14,6 @@ class RsvpsController < ApplicationController
 	end
 
 	def accept
-
 	end
 
 	def decline 

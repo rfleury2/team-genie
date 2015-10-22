@@ -14,4 +14,8 @@ class Team < ActiveRecord::Base
   def is_member?(player)
   	self.memberships.pluck(:player_id).include?(player.id) if player
   end
+
+  def player_count
+  	players.length
+  end
 end
