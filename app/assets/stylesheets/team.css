@@ -1,0 +1,19 @@
+.team {
+	vertical-align: middle;
+}
+
+.team-icon {
+	padding-right: 20px;
+}
+
+.team-name-label {
+	font-size: 2em;
+}
+
+.team-sport-label {
+	font-size: 1.5em;
+}
+
+.team-info-digest {
+	font-size: 1.25em;
+}

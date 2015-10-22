@@ -6,4 +6,6 @@ class RsvpReminderWorker
 		# tag:CRUCIAL - rework the timing for actual logic
 		RsvpMailer.delay_until(2.minutes.from_now).send_rsvp_request(rsvp, player)
 	end
+
+	# tag:CRUCIAL - Add rescue exception for when Sidekiq/Redis is down.
 end

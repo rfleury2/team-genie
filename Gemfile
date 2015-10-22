@@ -40,8 +40,6 @@ gem 'sinatra', :require => nil
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem "paperclip", "~> 4.3"
-gem "image_magick"
 
 gem 'rollbar', '~> 2.2.1'
 gem 'oj', '~> 2.12.14'
