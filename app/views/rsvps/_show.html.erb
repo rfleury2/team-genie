@@ -1,13 +1,34 @@
-{{ rsvp.player.name }} - {{ rsvp.response }} - {{ rsvp.comment }}
-
-<span ng-controller='ngRsvpCtrl'>
-	<button ng-hide='editingMode' ng-click='toggleEditing()' ng-click='toggleRsvpEdit(rsvp.id)' class="btn btn-primary">Change RSVP</button>
-	<div ng-show='editingMode'>
-		<button ng-click='updateRsvp("accept", newComment)' class="btn btn-success">Attending</button>
-		<button ng-click='updateRsvp("decline", newComment)' class="btn btn-warning">Not Attending</button>
-		<div>
-			Optional: <input type='text' ng-model='newComment' placeholder='My comment'></input type='text'>
-		</div>
-	</div>
-</span>
-
+<div class="row" ng-controller='ngRsvpCtrl'>
+  <div class="col-md-8 col-xs-10">
+    <div class="panel panel-default">
+      <div class="panel-body">
+			  <div class="row">
+			  	<div class='col-xs-hidden col-sm-2'>
+						<span ng-show="rsvp.response == 'accept'" class="fa fa-3x fa-thumbs-up"></span>
+						<span ng-show="rsvp.response == 'pending'" class="fa fa-3x fa-question"></span>
+						<span ng-show="rsvp.response == 'decline'" class="fa fa-3x fa-thumbs-down"></span>
+					</div>
+					<div class="col-xs-12 col-sm-6">
+						<h2 class='rsvp-player-name'>{{ rsvp.player.name }}</h2>
+					</div><!--/col-->    
+					<div class='col-xs-12 col-sm-4 pull-right'>      
+					  <span ng-hide='editingMode'>
+							<button class="btn btn-primary btn-block" ng-click='toggleEditing()'><span class="fa fa-plus-circle"></span> Change RSVP </button>
+							<br>
+							<div class=''>{{ rsvp.comment }}</div>
+						</span><!--/col--> 
+						<span ng-show='editingMode'>
+							<button class="btn btn-success btn-block" ng-click='updateRsvp("accept", newComment)'><span class="fa fa-thumbs-up"></span> Accept </button>
+						</span><!--/col-->
+						<span ng-show='editingMode'>
+							<button type="button" class="btn btn-warning btn-block" ng-click='updateRsvp("decline", newComment)'><span class="fa fa-thumbs-down"></span> Decline </button>  
+						</span><!--/col-->
+						<span ng-show='editingMode'>
+							Comment: <input type='text' ng-model='newComment' placeholder="My comment..."></input type='text'>
+						</span>
+					</div>	
+		  	</div><!--/row-->
+			</div><!--/panel-body-->
+    </div><!--/panel-->
+  </div><!--/col--> 
+</div><!--/row--> 
