@@ -10,12 +10,12 @@
 					</div>
 					<div class="col-xs-12 col-sm-6">
 						<h2 class='rsvp-player-name'>{{ rsvp.player.name }}</h2>
+						<p>{{ rsvp.comment }}</p>
 					</div><!--/col-->    
 					<div class='col-xs-12 col-sm-4 pull-right'>      
 					  <span ng-hide='editingMode'>
 							<button class="btn btn-primary btn-block" ng-click='toggleEditing()'><span class="fa fa-plus-circle"></span> Change RSVP </button>
 							<br>
-							<div class=''>{{ rsvp.comment }}</div>
 						</span><!--/col--> 
 						<span ng-show='editingMode'>
 							<button class="btn btn-success btn-block" ng-click='updateRsvp("accept", newComment)'><span class="fa fa-thumbs-up"></span> Accept </button>

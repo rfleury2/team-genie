@@ -11,7 +11,6 @@ ngTeamGenie.controller('ngRsvpCtrl', function ngRsvpCtrl($scope, RsvpRoutes) {
 	}
 
 	$scope.toggleEditing = function() {
-		console.log('gets called')
 		$scope.editingMode = !$scope.editingMode
 	}
 });

@@ -9,8 +9,10 @@ class RsvpsController < ApplicationController
 
 	def update
 		rsvp = find_rsvp(params[:id])
-		@rsvp = rsvp.update_attributes(rsvp_params)
-		respond_with { @rsvp }
+		puts rsvp.membership.player.name
+		rsvp_success = rsvp.update_attributes(rsvp_params)
+		puts rsvp_success
+		render :json => { success: rsvp_success }
 	end
 
 	def accept
