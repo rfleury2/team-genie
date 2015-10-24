@@ -4,6 +4,6 @@ class Game < ActiveRecord::Base
 
 	validates_presence_of :time, :team
 
-	scope :upcoming, -> { where('time >= ?', Time.now) }
-	scope :past, -> { where('time <= ?', Time.now) }
+	scope :upcoming, -> { where('time >= ?', Time.now).order(:time) }
+	scope :past, -> { where('time <= ?', Time.now, order(:time)) }
 end
