@@ -1,10 +1,20 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+class Seed
+	def self.create_memberships(team)
+		10.times do
+			new_user = User.create!(name: Faker::Name.name, email: Faker::Internet.email, password: 'password', password_confirmation: 'password')
+			membership = team.memberships.create!(player: new_user)
+		end
+	end
+
+	def self.create_games(team)
+		5.times do |index|
+			game = team.games.create!(time: DateTime.now + (7 * index + 1).days)
+			team.memberships.each do |membership|
+				game.rsvps.create!(membership: membership)
+			end
+		end
+	end
+end
 
 user = User.create!(name: "First Last", email: "user@example.com", password: "password", password_confirmation: "password")
 admin = User.create!(name: "Ricardo Fleury", email: "admin@admin.com", password: "password", password_confirmation: "password")
@@ -17,16 +27,8 @@ team3 = Team.create!(captain: user, name: "Air Bud")
 teams = [team, team2, team3]
 
 teams.each do |team|
-	10.times do
-		new_user = User.create!(name: Faker::Name.name, email: Faker::Internet.email, password: 'password', password_confirmation: 'password')
-		membership = team.memberships.create!(player: new_user)
-	end
-	5.times do |index|
-		game = team.games.create!(time: DateTime.now + (7 * index + 1).days)
-		team.memberships.each do |membership|
-			game.rsvps.create!(membership: membership)
-		end
-	end
+	Seed.create_memberships(team)
+	Seed.create_games(team)
 end
 
 10.times do
