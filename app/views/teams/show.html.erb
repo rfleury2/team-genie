@@ -1,16 +1,21 @@
 <div ng-controller='ngTeamTabsCtrl'>
 	<h1><%= @team.name %></h1>		
-	<ul class="nav nav-tabs nav-justified">
-	  <li role="presentation" id="games" class="team-tab active" ng-click="changeTab('games')"><a href="#">Games</a></li>
-	  <li role="presentation" id="roster" class="team-tab" ng-click="changeTab('roster')"><a href="#">Roster</a></li>
-	  <li role="presentation" id="settings" class="team-tab" ng-click="changeTab('settings')"><a href="#">Settings</a></li>
-	</ul>
-
-	<div ng-show="isActive('games')">
-		<%= render partial: 'games/index' %>
+	<div class='col-xs-12 col-sm-4'>
+		<div class="list-group">
+		  <li role="presentation" id="games" class="list-group-item team-tab active" ng-click="changeTab('games')"><a href="#">Games</a></li>
+		  <li role="presentation" id="roster" class="list-group-item team-tab" ng-click="changeTab('roster')"><a href="#">Roster</a></li>
+		  <li role="presentation" id="settings" class="list-group-item team-tab" ng-click="changeTab('settings')"><a href="#">Settings</a></li>
+		</div>
 	</div>
-	
-	<div ng-show="isActive('roster')">
-		<%= render partial: 'memberships/index' %>
+
+	<div class='col-xs-12 col-sm-8'>
+		<div ng-show="isActive('games')">
+			<%= render partial: 'games/index' %>
+		</div>
+		
+		<div ng-show="isActive('roster')">
+			<%= render partial: 'memberships/index' %>
+		</div>
 	</div>
 </div>
+

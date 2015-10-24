@@ -23,7 +23,6 @@ admin.send(:assign_role, "admin")
 team = Team.create!(captain: user, name: "Manchester Apart")
 team2 = Team.create!(captain: admin, name: "America States United")
 team3 = Team.create!(captain: user, name: "Air Bud")
-
 teams = [team, team2, team3]
 
 teams.each do |team|

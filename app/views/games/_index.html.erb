@@ -1,7 +1,11 @@
 <div ng-controller="ngGamesCtrl">
-	<h2>Games</h2>
-	<div ng-repeat="game in games" class="well game-well">
-		<%= render partial: 'games/show' %>
-	</div>
+  <div class="list-group games-container">
+    <a href="#" class="list-group-item active">
+      <h2 class="list-group-item-heading tab-title">Upcoming Games</h4>
+    </a>
+		<div ng-repeat="game in games" class="well game-well">
+			<%= render partial: 'games/show' %>
+		</div>
+  </div>
 	<%= render partial: 'games/new' %>
 </div>

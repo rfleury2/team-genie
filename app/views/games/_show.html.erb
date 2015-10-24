@@ -1,7 +1,14 @@
-<h3 class='game-time'>{{ game.time | date : 'short' }} @ [Location]</h3>
-<button ng-click='deleteGame(game)' class="btn btn-danger"><span class='fa fa-trash'></span>Delete</button>
-<!-- Implement to change the 'See RSVPs' to 'Hide RSVPs' -->
-<button ng-click='toggleRsvps(game)' class="btn btn-primary">See RSVPs</button>
+<div class='col-xs-12 col-sm-8'>
+	<h3 class='game-time'>{{ game.time | date : 'short' }}</h3>
+	<h4> @ [Location]</h4>
+</div>
+
+<div class='col-xs-12 col-sm-4'>
+	<button ng-click='deleteGame(game)' class="btn btn-danger pull-right"><span class='fa fa-trash'></span> Delete</button>
+	<!-- Implement to change the 'See RSVPs' to 'Hide RSVPs' -->
+	<button ng-click='toggleRsvps(game)' class="btn btn-primary pull-right">See RSVPs</button>
+</div>
+<div class='clearfix'></div>
 <div ng-show='game.active'>
 	<%= render partial: 'rsvps/index' %>
 </div>
