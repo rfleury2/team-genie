@@ -1,34 +1,32 @@
 <div class="row" ng-controller='ngRsvpCtrl'>
   <div class="panel panel-default no-margin">
     <div class="panel-body">
-		  <div class="row">
-		  	<div class='col-xs-hidden col-sm-1'>
-					<span ng-show="rsvp.response == 'accept'" class="fa fa-3x fa-thumbs-up"></span>
-					<span ng-show="rsvp.response == 'pending'" class="fa fa-3x fa-question"></span>
-					<span ng-show="rsvp.response == 'decline'" class="fa fa-3x fa-thumbs-down"></span>
-				</div>
-				<div class="col-xs-12 col-sm-7 no-padding no-margin">
-					<h3 class='rsvp-player-name'>{{ rsvp.player.name }}</h3>
-					<div>
-						<span ng-hide='editingMode'>
-							{{ rsvp.comment }}
-						</span>
-						<span ng-show='editingMode'>
-							Comment: <input type='text' ng-model='newComment' placeholder="My comment..."></input type='text'>
-						</span>
-					</div>
-				</div><!--/col-->    
-				<div class='col-xs-12 col-sm-4'>      
-				  <span ng-hide='editingMode'>
-						<button class="btn btn-primary btn-block" ng-click='toggleEditing()'><span class="fa fa-plus-circle"></span> Change RSVP </button>
-						<br>
-					</span> 
-					<span ng-show='editingMode'>
-						<button class="btn btn-success" ng-click='updateRsvp("accept", newComment)'><span class="fa fa-thumbs-up"></span> Accept </button>
-						<button class="btn btn-warning" ng-click='updateRsvp("decline", newComment)'><span class="fa fa-thumbs-down"></span> Decline </button>  
+	  	<div class='col-xs-hidden col-sm-1'>
+				<span ng-show="rsvp.response == 'accept'" class="fa fa-3x fa-thumbs-up"></span>
+				<span ng-show="rsvp.response == 'pending'" class="fa fa-3x fa-question"></span>
+				<span ng-show="rsvp.response == 'decline'" class="fa fa-3x fa-thumbs-down"></span>
+			</div>
+			<div class="col-xs-12 col-sm-7 no-padding no-margin">
+				<h3 class='rsvp-player-name'>{{ rsvp.player.name }}</h3>
+				<div>
+					<span ng-hide='editingMode'>
+						{{ rsvp.comment }}
 					</span>
-				</div>	
-	  	</div><!--/row-->
+					<span ng-show='editingMode'>
+						Comment: <input type='text' ng-model='newComment' placeholder="My comment..."></input type='text'>
+					</span>
+				</div>
+			</div><!--/col-->    
+			<div class='col-xs-12 col-sm-4'>      
+			  <span ng-hide='editingMode'>
+					<button class="btn btn-primary btn-block" ng-click='toggleEditing()'><span class="fa fa-plus-circle"></span> Change RSVP </button>
+					<br>
+				</span> 
+				<span ng-show='editingMode'>
+					<button class="btn btn-success" ng-click='updateRsvp("accept", newComment)'><span class="fa fa-thumbs-up"></span> Accept </button>
+					<button class="btn btn-warning" ng-click='updateRsvp("decline", newComment)'><span class="fa fa-thumbs-down"></span> Decline </button>  
+				</span>
+			</div>	
 		</div><!--/panel-body-->
   </div><!--/panel-->
 </div><!--/row--> 

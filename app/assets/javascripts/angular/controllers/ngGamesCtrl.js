@@ -23,6 +23,10 @@ ngTeamGenie.controller('ngGamesCtrl', function NgGamesCtrl($scope, GamesRoutes, 
 		}
 	}
 
+	$scope.toggleDelete = function() {
+		$scope.deleteMode = !$scope.deleteMode
+	}
+
 	
 	////////////   RSVP   //////////////
 	$scope.toggleRsvps = function(game) {

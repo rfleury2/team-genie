@@ -4,7 +4,8 @@
 </div>
 
 <div class='col-xs-12 col-sm-4'>
-	<button ng-click='deleteGame(game)' class="btn btn-danger pull-right"><span class='fa fa-trash'></span> Delete</button>
+	<button ng-hide='deleteMode' ng-click='toggleDelete()' class="btn btn-warning pull-right"><span class='fa fa-trash'></span> Delete</button>
+	<button ng-show='deleteMode' ng-click='deleteGame(game)' class="btn btn-danger pull-right"><span class='fa fa-trash'></span> Confirm Delete</button>
 	<!-- Implement to change the 'See RSVPs' to 'Hide RSVPs' -->
 	<button ng-click='toggleRsvps(game)' class="btn btn-primary pull-right">See RSVPs</button>
 </div>
