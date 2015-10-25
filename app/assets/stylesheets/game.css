@@ -12,3 +12,7 @@
 .games-container {
 	margin-top: 20px;
 }
+
+.game-container {
+	min-height: 70px;
+}
