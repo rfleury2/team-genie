@@ -20,7 +20,9 @@ class AuthsController < ApplicationController
 
   def facebook_auth
     @user = User.from_facebook(env['omniauth.auth'])
+    puts "user - #{@user}"
     if @user
+      puts 'if yes'
       assign_cookie
       redirect_to root_path
     else
