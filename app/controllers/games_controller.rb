@@ -3,7 +3,7 @@ class GamesController < ApplicationController
 
 	def index
 		team = find_team_by_id(params[:team_id])
-		games = team.games
+		games = team.games.upcoming
 		render :json => games
 	end
 

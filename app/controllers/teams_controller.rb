@@ -5,14 +5,14 @@ class TeamsController < ApplicationController
 	end
 
 	def index
-		@teams = current_user.captainships
+		@captain_teams = current_user.captainships
+		@non_captain_teams = current_user.non_captain_teams
 	end
 
 	def create
 		@team = current_user.captainships.new(team_params)
 		if @team.save
 			Membership.create_captain_membership(@team, current_user)
-			@teams = current_user.captainships
 			redirect_to team_path(@team)
 		else
 			assign_errors

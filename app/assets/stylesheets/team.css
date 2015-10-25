@@ -8,12 +8,19 @@
 
 .team-name-label {
 	font-size: 2em;
+	color: white;
 }
 
 .team-sport-label {
 	font-size: 1.5em;
+	color: white;
 }
 
 .team-info-digest {
 	font-size: 1.25em;
+	color: white;
+}
+
+.well-team {
+	background-color: #1abc9c !important; 
 }

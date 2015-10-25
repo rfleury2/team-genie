@@ -1,0 +1,18 @@
+.game-well {
+	background-color: #60B0B2 !important;
+	min-height: 200px;
+}
+
+.game-time {
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+
+.games-container {
+	margin-top: 20px;
+}
+
+.game-container {
+	min-height: 70px;
+}

@@ -3,7 +3,13 @@
 		<div class="row" id="starts">
 			<div class="col-md-12 col-sm-12 col-xs-12 work-list">
 				<h2 class="text-center portfolio-text">Manage Your Teams</h2>
-				<% @teams.each do |team| %>
+				<% @captain_teams.each do |team| %>
+					<%= render partial: 'teams/show', locals: { team: team } %>
+				<% end %>
+			</div>
+			<div class="col-md-12 col-sm-12 col-xs-12 work-list">
+				<h2 class="text-center portfolio-text">Manage Your Teams</h2>
+				<% @non_captain_teams.each do |team| %>
 					<%= render partial: 'teams/show', locals: { team: team } %>
 				<% end %>
 			</div>

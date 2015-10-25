@@ -7,6 +7,7 @@ ngTeamGenie.controller('ngRsvpCtrl', function ngRsvpCtrl($scope, RsvpRoutes) {
 		);
 		$scope.rsvp.response = newResponse;
 		$scope.rsvp.comment = newComment;
+		$scope.toggleEditing();
 	}
 
 	$scope.toggleEditing = function() {

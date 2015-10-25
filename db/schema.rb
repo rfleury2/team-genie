@@ -50,13 +50,9 @@ ActiveRecord::Schema.define(version: 20151019234053) do
   end
 
   create_table "teams", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "captain_id"
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
-    t.string   "sport"
+    t.string  "name"
+    t.integer "captain_id"
+    t.string  "sport"
   end
 
   create_table "users", force: :cascade do |t|

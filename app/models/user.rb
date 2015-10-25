@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   # Associations
   has_many :captainships, foreign_key: :captain_id, class_name: "Team"
   has_many :memberships, foreign_key: :player_id, dependent: :destroy
+  has_many :teams, through: :memberships
 
   # Validations
   has_secure_password
@@ -18,6 +19,10 @@ class User < ActiveRecord::Base
 	validates_confirmation_of :password
 
 	validates_presence_of :name
+
+  def non_captain_teams
+    teams.where.not(captain: self)
+  end
 
   def is_admin?
     role == 'admin'
@@ -45,6 +50,7 @@ class User < ActiveRecord::Base
       user.password = SecureRandom.urlsafe_base64
     end
     user.join_teams
+    user
   end
 
   def join_teams
