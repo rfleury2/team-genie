@@ -4,7 +4,7 @@ module InviteToTeam
 			return if team.is_member?(@player)
 			membership = @player.memberships.create(team: team)
 			RsvpGenerator.create_from_membership(membership)
-			# TODO: Team invitation mailer
+			TeamAddMailer.send_add_player_to_team(membership).deliver_now
 		else
 			UserInviter.invite_new_user(team, email, inviter)
 		end
