@@ -6,7 +6,9 @@
     <nav role="navigation">
       <span class='header-title'><%= link_to "Team Genie", root_path, class: 'title' %></span>
     </nav>
-    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <span class='fa fa-bars fa-2x'></span>
+    </a>
     <div class="navigation-tools">
       <ul id="js-navigation-menu" class="navigation-menu show">
         <% if current_user %>

@@ -43,3 +43,7 @@
 .no-bottom-margin {
 	margin-bottom: 0 !important;
 }
+
+.outer-container {
+	@include outer-container();
+}
