@@ -30,7 +30,13 @@ $base-border-color: $light-gray;
 $base-border: 1px solid $base-border-color;
 
 // Background Colors
-$base-background-color: #fff;
+$color1: #ffbf00; //rgba(255, 191, 0, 100)
+$color2: #e83f6f; //rgba(232, 63, 111, 100)
+$color3: #2274a5; //rgba(34, 116, 165, 100)
+$color4: #32936f; //rgba(50, 147, 111, 100)
+$color5: #ffffff; //rgba(255, 255, 255, 100)
+
+$base-background-color: #32936f;
 $secondary-background-color: tint($base-border-color, 75%);
 
 // Forms
