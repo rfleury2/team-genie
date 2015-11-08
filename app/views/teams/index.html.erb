@@ -1,5 +1,5 @@
-<div class='outer-container'>
-	<h2>Captain Teams</h2>
+<div class='outer-container teams-container'>
+	<div class='team-category-header'><h2>Captain Teams</h2></div>
 	<% @captain_teams.each do |team| %>
 		<div class="team-digest-grid grid-items">
 			<%= render partial: 'teams/show', locals: { team: team } %>
@@ -7,11 +7,11 @@
 	<% end %>
 
 
-	<h2>Player Teams</h2>
+	<div class='team-category-header'><h2>Player Teams</h2></div>
 	<% @non_captain_teams.each do |team| %>
 		<div class="team-digest-grid grid-items">
 			<%= render partial: 'teams/show', locals: { team: team } %>
 		</div>
 	<% end %>
-	<%= link_to "New Team", new_team_path, class: "btn btn-default btn-sub" %>
+	<%= link_to "New Team", new_team_path, class: "btn new-team-btn" %>
 </div>
