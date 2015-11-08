@@ -10,11 +10,8 @@
   $hero-image: 'https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png';
 
   @include background(url($hero-image), linear-gradient($gradient-angle, $hero-background-bottom, $hero-background-top), no-repeat $hero-background-top scroll);
-  background-color: #324766;
-  background-position: top;
-  background-repeat: no-repeat;
   background-size: cover;
-  padding-bottom: 3em;
+  margin: 1em 0 1em 0;
 
   .hero-logo img {
     height: 4em;
@@ -55,8 +52,6 @@
   }
 }
 
-
-
 // Grid items
 @mixin grid-item-columns($columns) {
   width: (100% / 12) * $columns;
@@ -67,23 +62,21 @@
   $base-background-color: white !default;
   $medium-screen: em(640) !default;
   $large-screen: em(860) !default;
-  $grid-items-background: $base-background-color;
-  $grid-item-background: desaturate($action-color, 30%);
-  $grid-item-colors: $color1;
+  $grid-items-background: white;
+  $grid-item-background: #139e6f;
+  $grid-item-colors: $color1, $color1, $color1, $color1, ;
   $grid-item-border-size: 9px;
   $grid-item-columns: 4;
   $grid-item-big-columns: 10;
   $grid-item-color: white;
-  $grid-item-height: 16em;
+  $grid-item-height: 20em;
+  margin-bottom: 1em;
 
   @include clearfix;
     
   .grid-item {
     @include transition (all 0.2s ease-in-out);
-    background: $grid-item-background;
-    border-bottom: $grid-item-border-size solid $grid-items-background;
-    border-left: ($grid-item-border-size / 2) solid $grid-items-background;
-    border-right: ($grid-item-border-size / 2) solid $grid-items-background;
+    background-color: $grid-item-background;
     border-top: 0;
     cursor: pointer;
     float: left;
@@ -95,25 +88,18 @@
     text-align: center;
     text-decoration: none;
     width: 100%;
+    @include omega(3n);
 
     @include media($large-screen) {
       @include grid-item-columns($grid-item-columns);
     }
 
-    @for $i from 1 through length($grid-item-colors) { // assign colors from $grid-item-colors list
-      &:nth-child(#{$i}) {
-        $background-from-list: nth($grid-item-colors, $i);
-        background-color: $background-from-list;
-        box-shadow: inset 0px 0px 1px 2px darken($background-from-list, 10%);
-
-        &:focus,
-        &:hover {
-          background-color: darken($background-from-list, 10%);
-          background-repeat: no-repeat;
-          background-position: top;
-          background-size: cover;
-        }
-      }
+    &:focus,
+    &:hover {
+      background-color: darken($grid-item-background, 10%);
+      background-repeat: no-repeat;
+      background-position: top;
+      background-size: cover;
     }
   }
 

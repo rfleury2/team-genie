@@ -1,5 +1,8 @@
 body {
-	background-color: $base-background-color;
+	margin: 0;
+	background-image: image-url("rec_sports_league_background_grass.png");
+  background-repeat: repeat;
+  background-size: cover;
 }
 
 .tab-title {
@@ -49,5 +52,5 @@ body {
 }
 
 .outer-container {
-	@include outer-container();
+	@include outer-container(80%);
 }
