@@ -26,6 +26,8 @@ gem 'bitters'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 4.4.0'
 
+gem "administrate"
+
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'omniauth-facebook'

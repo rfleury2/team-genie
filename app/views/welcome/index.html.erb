@@ -1,7 +1,7 @@
 <div class='outer-container'>
   <div class="hero">
   	<div class="hero-inner">
-      <a href="" class="hero-logo"><img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png
+      <a class="hero-logo"><img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png
   " alt="Logo Image"></a>
   		<div class="hero-copy">
   			<h1>Manage less, play more</h1>
@@ -9,7 +9,8 @@
 
         <div class="modal">
           <label for="modal-1">
-            <div class="modal-trigger">Log In</div>
+            <div class="modal-trigger button">Log In</div>
+            <div class='button'><%= link_to "Join TeamGenie", path: new_user_path %></div>
           </label>
           <input class="modal-state" id="modal-1" type="checkbox" />
           <div class="modal-fade-screen">
