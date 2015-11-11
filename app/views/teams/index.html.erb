@@ -1,19 +1,17 @@
-<div class="container-fluid work" id="work">
-	<div class="container">
-		<div class="row" id="starts">
-			<div class="col-md-12 col-sm-12 col-xs-12 work-list">
-				<h2 class="text-center portfolio-text">Manage Your Teams</h2>
-				<% @captain_teams.each do |team| %>
-					<%= render partial: 'teams/show', locals: { team: team } %>
-				<% end %>
-			</div>
-			<div class="col-md-12 col-sm-12 col-xs-12 work-list">
-				<h2 class="text-center portfolio-text">Manage Your Teams</h2>
-				<% @non_captain_teams.each do |team| %>
-					<%= render partial: 'teams/show', locals: { team: team } %>
-				<% end %>
-			</div>
+<div class='outer-container teams-container'>
+	<div class='team-category-header'><h2>Captain Teams</h2></div>
+	<% @captain_teams.each do |team| %>
+		<div class="team-digest-grid grid-items">
+			<%= render partial: 'teams/show', locals: { team: team } %>
 		</div>
-		<%= link_to "New Team", new_team_path, class: "btn btn-default btn-sub" %>
-	</div>
+	<% end %>
+
+
+	<div class='team-category-header'><h2>Player Teams</h2></div>
+	<% @non_captain_teams.each do |team| %>
+		<div class="team-digest-grid grid-items">
+			<%= render partial: 'teams/show', locals: { team: team } %>
+		</div>
+	<% end %>
+	<%= link_to "New Team", new_team_path, class: "btn new-team-btn" %>
 </div>

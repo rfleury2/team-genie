@@ -1,0 +1,16 @@
+<div class='form'>
+  <%= form_for :user, url: auth_path, role: 'form' do |f| %>
+    <% if @errors %>
+      <%= render partial: 'shared/errors', locals: { errors: @errors } %>
+    <% end %>
+    <%= f.email_field :email, autofocus: true, placeholder: "Email" %>
+    <%= f.password_field :password, placeholder: "Password" %>
+    <%# f.check_box :remember_me, text: "Remember me", checked: true %>
+    <%= f.submit "Log In" %>
+    <a href="/auth/facebook" class="button button-facebook">
+      <i class="fa fa-facebook fa-fx"></i> <span>Facebook</span>
+    </a>
+
+    <div class='other-functions'><%= link_to "Reset Password", new_reset_password_path %> | <%= link_to "Create Account", new_user_path %></div>
+  <% end %>
+</div>

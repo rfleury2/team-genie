@@ -17,7 +17,6 @@
           <li class="nav-link"><%= link_to "My Account", edit_user_path(current_user) %></li>
           <li class="nav-link"><%= link_to "Log out", auth_path(current_user), method: 'delete'%></li>
         <% else %>
-          <li class="nav-link"><%= link_to "Log in", new_auth_path, class: "page-scroll active" %></li>
           <li class="nav-link"><%= link_to "Sign up", new_user_path%></li>
         <% end %>
       </ul>

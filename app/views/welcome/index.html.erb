@@ -1,27 +1,91 @@
-<div class="hero">
-	<div class="hero-inner">
-    <a href="" class="hero-logo"><img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png
-" alt="Logo Image"></a>
-		<div class="hero-copy">
-			<h1>Managing your recreational sports teams shouldn't be a pain.</h1>
-			<p>Team Genie makes it easy</p>	
-		</div>
-	</div>
+<div class='outer-container'>
+  <div class="hero">
+  	<div class="hero-inner">
+      <a class="hero-logo"><img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png
+  " alt="Logo Image"></a>
+  		<div class="hero-copy">
+  			<h1>Manage less, play more</h1>
+  			<p>Team Genie makes managing recreational sports teams easy.</p>
+
+        <div class="modal">
+          <label for="modal-1">
+            <div class="modal-trigger button">Log In</div>
+            <div class='button'><%= link_to "Join TeamGenie", path: new_user_path %></div>
+          </label>
+          <input class="modal-state" id="modal-1" type="checkbox" />
+          <div class="modal-fade-screen">
+            <div class="modal-inner">
+              <div class="modal-close" for="modal-1"></div>
+              <h1>Log In</h1>
+              <%= render partial: "auths/new" %>
+            </div>
+          </div>
+        </div>
+
+
+  		</div>
+  	</div>
+  </div>
+  <div class='grid-items'>
+  	<a href='#manage-roster' class="grid-item">
+      <i class="fa fa-clipboard fa-3x"></i>
+      <h1>Manage Roster</h1>
+      <p>Invite your teammates to join your team and communicate seamlessly via in-app emails.</p>
+    </a>
+    <a href='#track-attendance' class="grid-item">
+      <i class="fa fa-calendar fa-3x"></i>
+      <h1>Track Attendance</h1>
+      <p>Players receive automatic RSVP requests for each game and respond with a single click.</p>
+    </a>
+    <a href='#find-subs' class="grid-item">
+      <i class="fa fa-pencil fa-3x"></i>
+      <h1>Find Subs</h1>
+      <p>Upcoming feature - find subs when your players are unavailable</p>
+    </a>
+  </div>
+
+  <div class="hero" id='manage-roster'>
+    <div class="hero-inner">
+      <a href="" class="hero-logo"><img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png
+  " alt="Logo Image"></a>
+      <div class="hero-copy">
+        <h1>Manage your roster</h1>
+        <p>Dummy text that will contain an explanation of the feature.</p>  
+      </div>
+    </div>
+  </div>
+
+  <div class="hero" id='track-attendance'>
+    <div class="hero-inner">
+      <a href="" class="hero-logo"><img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png
+  " alt="Logo Image"></a>
+      <div class="hero-copy">
+        <h1>Track Attendance</h1>
+        <p>Dummy text that will contain an explanation of the feature.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero" id='find-subs'>
+    <div class="hero-inner">
+      <a href="" class="hero-logo"><img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png
+  " alt="Logo Image"></a>
+      <div class="hero-copy">
+        <h1>Find Subs</h1>
+        <p>Dummy text that will contain an explanation of the feature.</p>
+      </div>
+    </div>
+  </div>
 </div>
-<div class='grid-items'>
-	<span class="grid-item">
-    <i class="fa fa-clipboard fa-3x"></i>
-    <h1>Manage Roster</h1>
-    <p>Invite your teammates to join your team and communicate seamlessly via in-app emails.</p>
-  </span>
-  <span class="grid-item">
-    <i class="fa fa-calendar fa-3x"></i>
-    <h1>Schedule Upcoming Games</h1>
-    <p>Players receive automatic RSVP requests and reminders for each game.</p>
-  </span>
-  <span class="grid-item">
-    <i class="fa fa-pencil fa-3x"></i>
-    <h1>Track Attendance Trends</h1>
-    <p>Captains monitor attendance through a digest every game.  Avoid surprises come gameday!</p>
-  </span>
+
+<div class="modal">
+  <input class="modal-state" id="modal-1" type="checkbox" />
+  <div class="modal-fade-screen">
+    <div class="modal-inner">
+      <div class="modal-close" for="modal-1"></div>
+      <h1>Modal Title</h1>
+      <p class="modal-intro">Intro text lorem ipsum dolor sit ametm, quas, eaque facilis aliquid cupiditate tempora cumque ipsum accusantium illo modi commodi  minima.</p>
+      <p class="modal-content">Body text lorem ipsum dolor ipsum dolor sit sit possimus amet, consectetur adipisicing elit. Itaque, placeat, explicabo, veniam quos aperiam molestias eriam molestias molestiae suscipit ipsum enim quasi sit possimus quod atque nobis voluptas earum odit accusamus quibusdam. Body text lorem ipsum dolor ipsum dolor sit sit possimus amet.</p>
+    </div>
+  </div>
 </div>

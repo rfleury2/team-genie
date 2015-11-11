@@ -1,0 +1,57 @@
+// INDEX
+.teams-container {
+	background-color: $color3;
+	padding: 1em;
+}
+
+.teams-category-header {
+	margin: 1em 0 0;
+}
+
+.new-team-btn {
+	float: right;
+	width: 30%;
+	text-align: center;
+}
+
+
+// SHOW
+.team-digest-grid {
+
+	.team-digest-item {
+		height: 9.5em;
+		text-align: left;
+
+		.sport-icon {
+			@include span-columns(2);
+			@include omega();
+			// TODO: Disappear on mobile - tag: styling, medium
+		}
+
+		.team-name-sport {
+			@include span-columns(7);
+			text-align: left;
+
+			.team-name {
+				font-size: 1.2em;
+			}
+
+			.team-sport {
+				font-size: 1em;
+			}
+		}
+
+		.team-digest {
+			@include span-columns(3);
+			font-size: 1.1em;
+
+			.upcoming-games {
+
+			}
+
+			.roster-size {
+
+			}
+		}
+	}
+}
