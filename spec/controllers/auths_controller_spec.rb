@@ -3,16 +3,6 @@ require 'rails_helper'
 RSpec.describe AuthsController, type: :controller do
 	let(:valid_user) { FactoryGirl.create(:user) }
 
-  describe "GET new" do
-    before do 
-      get :new
-    end
-
-    it 'renders login page' do
-      expect(response).to render_template(:new)
-    end
-  end
-
   describe "POST create" do
     describe "valid user" do
       before do
@@ -44,16 +34,12 @@ RSpec.describe AuthsController, type: :controller do
         post :create, user: { email: valid_user.email, password: "wrongpassword" }
       end
 
-      it "renders the login page" do
-        expect(response).to render_template :new
+      it "redirects to the login modal path" do
+        expect(response).to redirect_to root_path(login: true)
       end
 
       it "does not create a cookie" do
         expect(response.cookies).to be_empty
-      end
-
-      it "returns the correct error message" do
-        expect(assigns(:errors)).to eq ["Your email or password are incorrect.  Please try again"]
       end
     end
   end

@@ -1,15 +1,13 @@
 class AuthsController < ApplicationController
-	def new
-	end
-
 	def create
     @user = User.find_by(email: params[:user][:email])
     if can_authenticate?
     	assign_cookie
-      redirect_to teams_path
+      respond_to { |format| format.js { "window.location = /teams" } }
+      # redirect_to teams_path
     else
     	@errors = error_message
-      render :new
+      respond_to { |format| format.js { render nothing: true, status: 401 } }
     end
   end
 
@@ -20,11 +18,9 @@ class AuthsController < ApplicationController
 
   def facebook_auth
     @user = User.from_facebook(env['omniauth.auth'])
-    puts "user - #{@user}"
     if @user
-      puts 'if yes'
       assign_cookie
-      redirect_to root_path
+      redirect_to teams_path
     else
       @user = User.create_from_facebook(env['omniauth.auth'])
       assign_cookie
